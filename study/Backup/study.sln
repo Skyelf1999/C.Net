@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "study_1", "study_1\study_1.csproj", "{FC3ED8DF-6EFE-4C3A-90BB-7D33D91227CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "study_DataStructure", "study_DataStructure\study_DataStructure.csproj", "{8E961A3A-3C93-4606-8832-CA443A92A7FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC3ED8DF-6EFE-4C3A-90BB-7D33D91227CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC3ED8DF-6EFE-4C3A-90BB-7D33D91227CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC3ED8DF-6EFE-4C3A-90BB-7D33D91227CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC3ED8DF-6EFE-4C3A-90BB-7D33D91227CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E961A3A-3C93-4606-8832-CA443A92A7FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E961A3A-3C93-4606-8832-CA443A92A7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E961A3A-3C93-4606-8832-CA443A92A7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E961A3A-3C93-4606-8832-CA443A92A7FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A7E5BAA-8A05-464A-A70A-DF90E5E05151}
+	EndGlobalSection
+EndGlobal
