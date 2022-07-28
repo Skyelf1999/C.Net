@@ -11,17 +11,34 @@ namespace vsTest
     {
         static void Main(string[] args)
         {
+            // 工具对象
             Utils utils = new Utils();
+            // Leetcode题目
             Leetcode leetcode = new Leetcode();
-            int i=0;
-            for(i=0;i<10;i++) if(i==3) break;
+            // 测试用对象
+            Test testPrograms = new Test();
 
-            Console.WriteLine(i);
-            // int[] data = {2,0,6,0,0,7,7,0};
-            // Console.WriteLine(leetcode.SpecialArray(data));
-            
+            testPrograms.test_Queue();
         }
 
+    }
+
+
+    class Data
+    {
+        public int dataInt = -999;
+        public Data(int dataInt)
+        {
+            this.dataInt = dataInt;
+        }
+
+        public override string ToString()
+        {
+            ArrayList list = new ArrayList();
+            list.Add("dataInt："+dataInt.ToString());
+            string info = string.Join("；",(string[])list.ToArray(typeof(string)));
+            return info;
+        }
     }
 
 }

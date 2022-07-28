@@ -4,6 +4,7 @@ using System.Collections;
 
 namespace vsTest
 {
+    // 保存Leetcode题目答案函数
     class Leetcode
     {
         // 数组特征值
