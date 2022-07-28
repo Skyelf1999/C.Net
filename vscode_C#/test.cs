@@ -72,6 +72,20 @@ namespace vsTest
 
             utils.funcEnd(func);
         }
+
+        public void test_Tree()
+        {
+            string func = "树";
+            utils.funcStart(func);
+
+            int nul = -999;
+            int[] arr = {3,7,1,nul,2,4,nul,nul,nul,nul,nul,5,6};
+            Tree tree = new Tree();
+            tree.createByIntArray(arr);
+            Console.WriteLine(tree.root.left.right==null);
+
+            utils.funcEnd(func);
+        }
     }
 
     

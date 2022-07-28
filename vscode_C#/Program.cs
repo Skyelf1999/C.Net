@@ -18,7 +18,7 @@ namespace vsTest
             // 测试用对象
             Test testPrograms = new Test();
 
-            testPrograms.test_Queue();
+            testPrograms.test_Tree();
         }
 
     }
@@ -27,9 +27,16 @@ namespace vsTest
     class Data
     {
         public int dataInt = -999;
+        private int p = 10;
+
         public Data(int dataInt)
         {
             this.dataInt = dataInt;
+        }
+
+        public int P{
+            get { return p; }
+            set { p = value; }
         }
 
         public override string ToString()

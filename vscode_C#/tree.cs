@@ -7,52 +7,102 @@ namespace vsTest
     // 树叶节点
     class TreeNode
     {
-        public int? data;
-        public TreeNode? left  = null;
-        public TreeNode? right = null;
+        public Object? data;                // 数据
+        public TreeNode? left  = null;      // 左子
+        public TreeNode? right = null;      // 右子
 
-        public TreeNode(int? data=null)
+        public TreeNode(Object? data=null)
         {
-            this.data = data;
+            if(Convert.ToInt32(data)!=-999) this.data = data;
+            else this.data = null;
+        }
+        public override string ToString()
+        {
+            return "data = " + data;
         }
     }
 
     // 树结构管理类
     class Tree
     {
-        TreeNode root = new TreeNode();         // 根节点
+        public TreeNode? root = null;              // 根节点
         // 树数据列表
+        /* 
+            数组的序号为0~Length-1时
+                左子：i*2+1；右子：i*2+2
+            数组的序号为1~Length时
+                左子：i*2；右子：i*2+1
+        */
         List<int>? dataList = null;
-        int deep;                               // 深度
-        int Count;                              // 节点总数
-        int leaf;                               // 叶子总数
+        private int deep;                   // 深度
+        private int count = 1;              // 节点总数
+        private int leaf;                   // 叶子总数
 
-        // 根据数组数据创建树
-        public void createByArray(int[] arr)
+
+        // 根据数组数据创建二叉树
+        public void createByIntArray(int[] arr)
         {
-            /* 
-                数组的序号为0~Length-1时
-                    左子：i*2+1；右子：i*2+2
-                数组的序号为1~Length时
-                    左子：i*2；右子：i*2+1
-            */
             // 保存数据
             dataList = new List<int>(arr);
+
             // 借助队列进行创建
             Queue<TreeNode> help = new Queue<TreeNode>();
-            TreeNode cur = root;
-            for(int i=0;i*2+1<arr.Length;i++)
+            root = new TreeNode(arr[0]);
+            TreeNode? cur = root;
+            TreeNode? node = null;
+            for(int i=1;i<arr.Length;i++)
             {
-                // 当前节点
-                if(arr[i]!=-999) cur.data = arr[i];
-                else continue;
-                // 左子
-                if(arr[i*2+1]!=-999 ) cur.left = new TreeNode(arr[i*2+1]);
-                else cur.left = null;
-                // 右子
-                if((i+1)*2<arr.Length) cur.right = new TreeNode(arr[(i+1)*2]);
-                else cur.right = null;
+                // 若这次即将加入新节点的是下一个操作节点的子，则更换当前操作节点
+                if(i>1 && i%2==1) cur = help.Dequeue();
+                // 根据数据创建新节点
+                node = new TreeNode(arr[i]);
+                // 若新节点不为空，则添加为当前操作节点的子节点
+                if(node.data!=null)
+                {
+                    count++;
+                    if(i%2==1) cur.left = node;
+                    else cur.right = node;
+                }
+                // 进队，准备作为之后的操作节点
+                help.Enqueue(new TreeNode(arr[i]));
             }
+            deep = (int)Math.Floor(Math.Log(dataList.Count,2)) + 1;
+            for(int i=Convert.ToInt32(Math.Pow(2,deep-1))-1;i<dataList.Count;i++)
+                if(dataList[i]!=-999) leaf++;
+            Console.WriteLine("创建完毕！");
+            Console.WriteLine("有效节点数：{0}；深度：{1}；叶子数：{2}\n",count,deep,leaf);
         }
+
+        public int Deep{
+            get { return deep; }
+            set { deep = value; }
+        }
+        public int Count{
+            get { return count; }
+            set { count = value; }
+        }
+        public int Leaf{
+            get { return leaf; }
+            set { leaf = value; }
+        }
+
+        // 前序遍历
+        public void dlr()
+        {
+
+        }
+
+        // 中序遍历
+        public void ldr()
+        {
+
+        }
+
+        // 后序遍历
+        public void lrd()
+        {
+
+        }
+
     }
 }
