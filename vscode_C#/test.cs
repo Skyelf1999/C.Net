@@ -41,6 +41,7 @@ namespace vsTest
 
             Console.WriteLine("创建string类型的栈");
             Stack<string> st = new Stack<string>();
+            Console.WriteLine("空栈长度：{0}",st.Count);
             string[] datas = {"。", "MHRSB", "玩的是", "昨天晚上", "我"};
             Console.WriteLine("入栈元素：");
             foreach(string s in datas)
@@ -82,7 +83,35 @@ namespace vsTest
             int[] arr = {3,7,1,nul,2,4,nul,nul,nul,nul,nul,5,6};
             Tree tree = new Tree();
             tree.createByIntArray(arr);
-            Console.WriteLine(tree.root.left.right==null);
+
+            // TreeNode root = new TreeNode(1);
+            // TreeNode cur = root;
+            // Queue<TreeNode> q = new Queue<TreeNode>();
+
+            // TreeNode node = new TreeNode(2);
+            // cur.left = node;
+            // q.Enqueue(node);
+
+            // node = new TreeNode(3);
+            // cur.right = node;
+            // q.Enqueue(node);
+
+            // Console.WriteLine("{0}；{1},{2}",root,root.left,root.right);
+
+            // cur = q.Dequeue();
+
+            // node = new TreeNode(4);
+            // cur.left = node;
+            // q.Enqueue(node);
+
+            // node = new TreeNode(5);
+            // cur.right = node;
+            // q.Enqueue(node);
+
+            // Console.WriteLine("{0}；{1},{2}",root.left,root.left.left,root.left.right);
+
+            TreeVisit treeVisit = new TreeVisit();
+            treeVisit.ldr(tree.root,false);
 
             utils.funcEnd(func);
         }
