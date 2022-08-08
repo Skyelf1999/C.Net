@@ -79,39 +79,16 @@ namespace vsTest
             string func = "树";
             utils.funcStart(func);
 
+            // 创建
             int nul = -999;
             int[] arr = {3,7,1,nul,2,4,nul,nul,nul,nul,nul,5,6};
             Tree tree = new Tree();
             tree.createByIntArray(arr);
-
-            // TreeNode root = new TreeNode(1);
-            // TreeNode cur = root;
-            // Queue<TreeNode> q = new Queue<TreeNode>();
-
-            // TreeNode node = new TreeNode(2);
-            // cur.left = node;
-            // q.Enqueue(node);
-
-            // node = new TreeNode(3);
-            // cur.right = node;
-            // q.Enqueue(node);
-
-            // Console.WriteLine("{0}；{1},{2}",root,root.left,root.right);
-
-            // cur = q.Dequeue();
-
-            // node = new TreeNode(4);
-            // cur.left = node;
-            // q.Enqueue(node);
-
-            // node = new TreeNode(5);
-            // cur.right = node;
-            // q.Enqueue(node);
-
-            // Console.WriteLine("{0}；{1},{2}",root.left,root.left.left,root.left.right);
-
+            // 访问
             TreeVisit treeVisit = new TreeVisit();
+            treeVisit.dlr(tree.root,false);
             treeVisit.ldr(tree.root,false);
+            treeVisit.lrd(tree.root,false);
 
             utils.funcEnd(func);
         }

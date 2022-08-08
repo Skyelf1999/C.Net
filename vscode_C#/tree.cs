@@ -10,12 +10,20 @@ namespace vsTest
         public Object? data;                // 数据
         public TreeNode? left  = null;      // 左子
         public TreeNode? right = null;      // 右子
+        public bool flag = true;
 
         public TreeNode(Object? data=null)
         {
             if(Convert.ToInt32(data)!=-999) this.data = data;
             else this.data = null;
         }
+
+        public bool isChild(TreeNode node)
+        {
+            if(left==node || right==node) return true;
+            else return false;
+        }
+
         public override string ToString()
         {
             return "data = " + data;
@@ -127,19 +135,22 @@ namespace vsTest
             {
                 Console.WriteLine("进行非递归DLR");
                 Stack<TreeNode> stack = new Stack<TreeNode>();
-                stack.Push(cur);
-                while(stack.Count>0)
-                {
-                    cur = stack.Pop();          // 获取当前访问目标
+                while(stack.Count>0 || cur!=null)
+                {       
                     Console.WriteLine(cur);
-                    while(cur.left!=null)       
+                    if(cur.left!=null)
                     {
-                        // 向左走，右子先入栈
                         if(cur.right!=null) stack.Push(cur.right);
                         cur = cur.left;
-                        Console.WriteLine(cur);
+                    }
+                    else if(cur.right!=null) cur = cur.right;
+                    else 
+                    {
+                        if(stack.Count==0) cur = null;
+                        else cur = stack.Pop();
                     }
                 }
+                Console.WriteLine();
             }
         }
 
@@ -172,6 +183,7 @@ namespace vsTest
                         cur = cur.right;
                     }
                 }
+                Console.WriteLine();
             }
         }
 
@@ -187,13 +199,36 @@ namespace vsTest
             }
             else
             {
+                Console.WriteLine("进行非递归LRD，起点：{0}",cur);
                 Stack<TreeNode> stack = new Stack<TreeNode>();
-                stack.Push(cur);
-                while(stack.Count>0)
+                while(stack.Count>0 || cur!=null)
                 {
-                    
+                    // 全部左后代进栈
+                    while(cur!=null)
+                    {
+                        stack.Push(cur);
+                        cur = cur.left;
+                    }
+                    if(stack.Count>0)
+                    {
+                        cur = stack.Peek();
+                        // 初次
+                        if(cur.flag && cur.right!=null) 
+                        {
+                            cur.flag = false;
+                            cur = cur.right;
+                        }
+                        else    // 再次
+                        {
+                            cur = stack.Pop();
+                            Console.WriteLine(cur);
+                            cur = null;
+                        }
+                    }
                 }
+                Console.WriteLine();
             }
         }
+
     }
 }
