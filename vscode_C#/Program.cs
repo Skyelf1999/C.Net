@@ -18,12 +18,13 @@ namespace vsTest
             // 测试用对象
             Test testPrograms = new Test();
 
-            testPrograms.test_Tree();
+            testPrograms.test_Class();
         }
 
     }
 
 
+    // 测试用数据类
     class Data
     {
         public int dataInt = -999;

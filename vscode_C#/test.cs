@@ -8,6 +8,9 @@ namespace vsTest
     class Test
     {
         Utils utils = new Utils();
+        enum Game  {
+                DotA, MHR, SC
+                };
 
         // 测试方法示例
         public void test_Example()
@@ -15,10 +18,57 @@ namespace vsTest
             string func = "";
             utils.funcStart(func);
 
-            // ……
+
 
             utils.funcEnd(func);
         }
+
+
+        public void test_Enum()
+        {
+            string func = "枚举";
+            utils.funcStart(func);
+
+            Game x = Game.DotA;
+            Game y = Game.MHR;
+            Game z = Game.SC;
+            Console.WriteLine("{0}, {1}, {2}",x,y,z+1);
+
+            utils.funcEnd(func);
+        }
+
+
+        public void test_List()
+        {
+            string func = "List";
+            utils.funcStart(func);
+
+            List<string> list = new List<string>();
+            list.Add("你说");
+            list.Add("什么");
+            list.Add("呢");
+            string info = string.Join(",", (string[])list.ToArray());
+            Console.WriteLine(info);
+
+            utils.funcEnd(func);
+        }
+
+
+        public void test_ArrayList()
+        {
+            string func = "ArrayList";
+            utils.funcStart(func);
+
+            ArrayList al = new ArrayList();
+            al.Add("你好");
+            al.Add(100);
+            // al.Add(true);
+            al.Add(new Data(22));
+            Console.WriteLine(al);
+
+            utils.funcEnd(func);
+        }
+
 
         public void test_Hashtable()
         {
@@ -33,6 +83,7 @@ namespace vsTest
 
             utils.funcEnd(func);
         }
+
 
         public void test_Stack()
         {
@@ -52,6 +103,7 @@ namespace vsTest
             Console.WriteLine("\n栈大小：{0}；栈顶元素：{1}；是否包含MHRSB：{2}",st.Count,st.Peek(),st.Contains("MHRSB"));
             utils.funcEnd(func);
         }
+
 
         public void test_Queue()
         {
@@ -89,6 +141,21 @@ namespace vsTest
             treeVisit.dlr(tree.root,false);
             treeVisit.ldr(tree.root,false);
             treeVisit.lrd(tree.root,false);
+
+            utils.funcEnd(func);
+        }
+
+
+        // 测试方法示例
+        public void test_Class()
+        {
+            string func = "面向对象";
+            utils.funcStart(func);
+
+            Player x = new Player("dsh",23,"起名难的神话");
+            string[] games = {"DotA2","MHR","HOS"};
+            x.games = new List<string>(games);
+            Console.WriteLine(x);
 
             utils.funcEnd(func);
         }
