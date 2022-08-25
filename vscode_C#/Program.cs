@@ -17,9 +17,10 @@ namespace vsTest
             Leetcode leetcode = new Leetcode();
             // 测试用对象
             Test testPrograms = new Test();
+            testPrograms.test_LinkedList();
 
             // testPrograms.test_List();
-            leetcode.checkArray(new int[]{1,3,2,6,3,4});
+            // int[] ret = leetcode.PlusOne(new int[]{9,9,9});
         }
 
     }

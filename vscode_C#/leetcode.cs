@@ -155,5 +155,36 @@ namespace vsTest
             Console.WriteLine("位置错误数：{0}",num);
         }
 
+
+        // 题目：给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一
+        /*
+            输入：digits = [1,2,3]
+            输出：[1,2,4]
+            解释：输入数组表示数字 12
+        */
+        public int[] PlusOne(int[] digits)
+        {
+            int carry = 0;
+            for(int i=digits.Length-1;i>=0;i--)
+            {
+                if(i==digits.Length-1) digits[i] = digits[i] + 1 + carry;
+                else digits[i] += carry;
+                carry = 0;
+                // 进位
+                if(digits[i]>=10)
+                {
+                    digits[i] -= 10;
+                    carry = 1;
+                }
+            }
+            if(carry>0) // 最高位有进位
+            {
+                int[] ret = new int[digits.Length+1];
+                ret[0] = carry;
+                for(int i=0;i<digits.Length;i++) ret[i+1] = digits[i];
+                return ret;
+            }
+            return digits;
+        }
     }
 }

@@ -71,6 +71,29 @@ namespace vsTest
         }
 
 
+        public void test_LinkedList()
+        {
+            string func = "链表";
+            utils.funcStart(func);
+
+            LinkedList<string> ll = new LinkedList<string>();
+            ll.AddLast("dsh");
+            ll.AddLast("起名难");
+            ll.AddFirst("开头");
+            LinkedListNode<string> head = ll.First;
+            head.Value = "链表开头";
+            ll.AddAfter(head,new LinkedListNode<string>("内容为"));
+            LinkedListNode<string> cur = head;
+            while(cur!=null)
+            {
+                Console.WriteLine(cur.Value);
+                cur = cur.Next;
+            }
+
+            utils.funcEnd(func);
+        }
+
+
         public void test_Hashtable()
         {
             string func = "Hashtable";
