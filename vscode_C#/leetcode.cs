@@ -4,9 +4,15 @@ using System.Collections;
 
 namespace vsTest
 {
-    // 保存Leetcode题目答案函数
+    // 保存Leetcode题目答案
     class Leetcode
     {
+        // 题目：
+        /*
+            
+        */
+
+
         // 数组特征值
         public int SpecialArray(int[] nums) 
         {
@@ -25,6 +31,7 @@ namespace vsTest
             }
             return result;
         }
+
 
         public int MaximumProduct(int[] nums) 
         {
@@ -45,8 +52,6 @@ namespace vsTest
             return result;
         }
 
-
-        
 
         public string ReorderString(string text)
         {
@@ -91,6 +96,63 @@ namespace vsTest
 
             Console.WriteLine(string.Join(mid, (string[])result.ToArray(typeof(string))) + tail + ";");
             return "\nover\n";
+        }
+
+
+        // 题目：字符串尾单词长度
+        /*
+            给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
+            单词 是指仅由字母组成、不包含任何空格字符的最大子字符串
+        */
+        public void LengthOfLastWord(string s) 
+        {
+            // if(s.Length==1 && !s.Equals(" ")) return 1;
+            int start = -1;
+            int end = -2;
+            int i = 0;
+
+            for(i=0;i<s.Length;i++)
+            {
+                if(s[i]!=' ')
+                    if(i==0 || s[i-1]==' ')
+                    {
+                        start = i;
+                        Console.WriteLine("start = {0}",start);
+                    }
+                if(i>0 && s[i-1]!=' ' && s[i]==' ')
+                {
+                    end = i;
+                    Console.WriteLine("end = {0}",end);
+                }
+            }
+            Console.WriteLine("----");
+            if(start>end)
+            {
+                end = i;
+                Console.WriteLine("end = {0}",end);
+            }
+            string ret = s.Substring(start,end-start);
+            Console.WriteLine("{0}, {1}, {2}, {3}\n\n",start,end,ret,s.Length);
+        }
+
+
+        // 题目：输出数组排序前位置错误的数量
+        /*
+            
+        */ 
+        public void checkArray(int[] heights)
+        {
+            int num = 0;
+            int[] arr = heights;
+            Console.WriteLine("排序前：{0}",string.Join(",",arr));
+            Array.Sort(heights);
+            Console.WriteLine("排序后：{0}",string.Join(",",heights));
+            for(int i=0;i<arr.Length;i++)
+            {
+                Console.WriteLine("位置{0}处：{1}, {2}",i,arr[i],heights[i]);
+                if(arr[i]!=heights[i]) num++;
+            }
+            Console.WriteLine("位置错误数：{0}",num);
         }
 
     }

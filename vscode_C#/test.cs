@@ -49,6 +49,7 @@ namespace vsTest
             list.Add("呢");
             string info = string.Join(",", (string[])list.ToArray());
             Console.WriteLine(info);
+            Console.WriteLine("最后一个元素：{0}",list[list.Count-1]);
 
             utils.funcEnd(func);
         }
