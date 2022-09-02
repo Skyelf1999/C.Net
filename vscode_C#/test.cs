@@ -165,6 +165,7 @@ namespace vsTest
             treeVisit.dlr(tree.root,false);
             treeVisit.ldr(tree.root,false);
             treeVisit.lrd(tree.root,false);
+            treeVisit.BFS(tree.root);
 
             utils.funcEnd(func);
         }

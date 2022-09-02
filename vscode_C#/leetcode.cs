@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+using System.Globalization;
 using System;
 using System.Collections;
 
@@ -106,11 +108,11 @@ namespace vsTest
         */
         public void LengthOfLastWord(string s) 
         {
-            // if(s.Length==1 && !s.Equals(" ")) return 1;
             int start = -1;
             int end = -2;
             int i = 0;
 
+            // 找到最后一个单词的首尾字母序号
             for(i=0;i<s.Length;i++)
             {
                 if(s[i]!=' ')
@@ -136,28 +138,9 @@ namespace vsTest
         }
 
 
-        // 题目：输出数组排序前位置错误的数量
+        // 题目：模拟加法器
         /*
-            
-        */ 
-        public void checkArray(int[] heights)
-        {
-            int num = 0;
-            int[] arr = heights;
-            Console.WriteLine("排序前：{0}",string.Join(",",arr));
-            Array.Sort(heights);
-            Console.WriteLine("排序后：{0}",string.Join(",",heights));
-            for(int i=0;i<arr.Length;i++)
-            {
-                Console.WriteLine("位置{0}处：{1}, {2}",i,arr[i],heights[i]);
-                if(arr[i]!=heights[i]) num++;
-            }
-            Console.WriteLine("位置错误数：{0}",num);
-        }
-
-
-        // 题目：给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一
-        /*
+            给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一
             输入：digits = [1,2,3]
             输出：[1,2,4]
             解释：输入数组表示数字 12
@@ -186,5 +169,243 @@ namespace vsTest
             }
             return digits;
         }
+
+
+        // 题目：找到错误数字
+        /*
+            集合 s 包含从 1 到 n 的整数。
+            集合里面某一个数字复制了成了集合里面的另外一个数字的值，
+            导致集合 丢失了一个数字 并且 有一个数字重复 。
+        */
+        public int[] FindErrorNums(int[] nums)
+        {
+            int[] ret = new int[2];
+            int i,j=0;
+            Array.Sort(nums);
+
+            for(i=1;i<nums.Length;i++)
+            {
+                if(nums[i]==nums[i-1]) break;
+                if(nums[i-1]==i && nums[i]!=i+1) j=i;
+            }
+            ret[0] = nums[i];       // 重复出现的数
+
+            if(ret[0]==i+1)         // 丢失的数字在前
+            {
+                Console.WriteLine("在前");
+                ret[1] = j+1;
+                return ret;
+            }
+            else if(ret[0]==i)      // 丢失的数字在后
+            {
+                Console.WriteLine("在后");
+                while(++i<nums.Length)
+                {
+                    if(nums[i]!=nums[i-1]+1)
+                    {
+                        ret[1] = i;
+                        return ret;
+                    }
+                }
+            }
+            ret[1] = i;
+
+            return ret;
+        }
+
+
+        // 题目：判断出栈顺序是否可行
+        public bool ValidateStackSequences(int[] pushed, int[] popped) 
+        {
+            Stack<int> stack = new Stack<int>();
+            int i=0,j=0;
+            stack.Push(pushed[0]);
+            while(i<pushed.Length)
+            {
+                while(stack.Count>0 && stack.Peek()==popped[j])
+                {
+                    stack.Pop();
+                    j++;
+                }
+                stack.Push(pushed[i]);
+                i++;
+            }
+            if(stack.Count==0) return true;
+            return false;
+        }
+
+
+        // 题目：计算优惠价格
+        // 类型：数组
+        /*
+            商店里正在进行促销活动，如果你要买第 i 件商品，那么你可以得到与 prices[j] 相等的折扣
+            其中 j 是满足 j > i 且 prices[j] <= prices[i] 的 最小下标 ，如果没有满足条件的 j ，你将没有任何折扣。
+            请你返回一个数组，数组中第 i 个元素是折扣后你购买商品 i 最终需要支付的价格。
+        */
+        public int[] FinalPrices(int[] prices) 
+        {
+            int[] ret = new int[prices.Length];
+            int discount;
+
+            for(int i=0;i<ret.Length-1;i++)
+            {
+                discount = 0;
+                for(int j=i+1;j<prices.Length;j++)
+                {
+                    if(prices[j]<=prices[i])
+                    {
+                        discount = prices[j];
+                        break;
+                    }
+                }
+                ret[i] = prices[i]-discount;
+            }
+            ret[ret.Length-1] = prices[prices.Length-1];
+
+            return ret;
+        }
+
+
+
+        // 题目：二进制求和
+        public string AddBinary(string a, string b) 
+        {
+            Stack<bool> st = new Stack<bool>();
+            bool carry = false;
+            int i=a.Length-1,j=b.Length-1;
+
+            while(i>-1 || j>-1)
+            {
+                if(i<0)                 // b有剩余
+                {
+                    if(b[j]=='0')
+                    {
+                        st.Push(carry);
+                        carry = false;
+                    }
+                    else
+                    {
+                        if(carry) st.Push(false);
+                        else st.Push(true);
+                    }
+                }
+                else if(j<0)            // a有剩余
+                {
+                    if(a[i]=='0')
+                    {
+                        st.Push(carry);
+                        carry = false;
+                    }
+                    else
+                    {
+                        if(carry) st.Push(false);
+                        else st.Push(true);
+                    }
+                }
+                else
+                {
+                    if(a[i]==b[j])      // 0&0 或 1&1，结果末尾为0
+                    {
+                        st.Push(carry);
+                        if(a[i]=='0') carry = false;
+                        else carry = true;
+                    }
+                    else                // 0&1，结果末尾为1
+                    {
+                        if(carry) st.Push(false);
+                        else st.Push(true);
+                    }
+                }
+                Console.WriteLine("i={0}, j={1}, 本次结果={2}, 进位={3}",i,j,st.Peek(),carry);
+                i--;
+                j--;
+                
+            }
+            if(carry) st.Push(carry);
+            
+            string ret = "";
+            // 根据栈构造结果
+            while(st.Count>0)
+            {
+                if(st.Pop()) ret = ret+"1";
+                else ret = ret+"0";
+            }
+            
+            return ret;
+        }
+
+
+        // 城市天际线
+        /*
+            在不改变四个方向视图形状的基础上
+            尽可能增大高度
+            返回增加的高度和
+        */
+        public int MaxIncreaseKeepingSkyline(int[][] grid) 
+        {
+            // 每个楼可增高高度为 min{所在行高度最大值, 所在列高度最大值}
+            int ret = 0;
+            int[] rowMax = new int[grid.Length];
+            int[] colMax = new int[grid[0].Length];
+            int i,j;
+
+            // 初始化列最大值
+            for(j=0;j<grid[0].Length;j++)
+            {
+                colMax[j] = 0;
+                for(i=0;i<grid.Length;i++)
+                    if(grid[i][j]>colMax[j]) colMax[j] = grid[i][j];
+                Console.WriteLine("第{0}列最大值：{1}",j,colMax[j]);
+            }
+
+            // 初始化行最大值
+            for(i=0;i<grid.Length;i++)
+            {
+                rowMax[i] = 0;
+                for(j=0;j<grid[i].Length;j++)
+                    if(grid[i][j]>rowMax[i]) rowMax[i] = grid[i][j];
+                Console.WriteLine("第{0}行最大值：{1}",i,rowMax[i]);
+            }
+
+            // 增高
+            for(i=0;i<grid.Length;i++)
+            {
+                for(j=0;j<grid[i].Length;j++)
+                {
+                    int n = rowMax[i]>=colMax[j]?colMax[j]:rowMax[i];
+                    if(grid[i][j]<n) ret += n-grid[i][j];
+                }
+            }
+
+            return ret;
+        }
+
+        
+        // 题目：找到最长回文子串
+    public string LongestPalindrome(string s) 
+    {
+        string ret = "";
+        int n = s.Length;
+        int end = 2*n-1;
+
+        for(int i=0;i<end;i++)
+        {
+            double mid = i/2.0;
+            int p = (int)(Math.Floor(mid));
+            int q = (int)(Math.Ceiling(mid));
+            // 向两侧扩散
+            while(p>-1 && q<n)
+            {
+                if(s[p]!=s[q]) break;
+                p--;
+                q++;
+            }
+
+            int len = q-p-1;
+            if(len>ret.Length) ret = s.Substring(p+1,len);
+        }
+        return ret;
+    }
+
     }
 }

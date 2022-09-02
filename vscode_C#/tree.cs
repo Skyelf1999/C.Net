@@ -43,9 +43,9 @@ namespace vsTest
                 左子：i*2；右子：i*2+1
         */
         List<int>? dataList = null;
-        private int deep;                   // 深度
-        private int count = 1;              // 节点总数
-        private int leaf;                   // 叶子总数
+        private int deep;                          // 深度
+        private int count = 1;                     // 节点总数
+        private int leaf;                          // 叶子总数
 
 
         // 根据数组数据创建二叉树
@@ -99,6 +99,9 @@ namespace vsTest
                 if(dataList[i]!=-999) leaf++;
             Console.WriteLine("创建完毕！");
             Console.WriteLine("有效节点数：{0}；深度：{1}；叶子数：{2}\n",count,deep,leaf);
+            this.Deep = deep;
+            this.Count = count;
+            this.Leaf = leaf;
         }
         
 
@@ -227,6 +230,22 @@ namespace vsTest
                     }
                 }
                 Console.WriteLine();
+            }
+        }
+
+
+        // 广度优先
+        public void BFS(TreeNode? cur)
+        {
+            Console.WriteLine("进行BFS，起点：{0}",cur);
+            Queue<TreeNode> que = new Queue<TreeNode>();
+            while(cur!=null)
+            {
+                if(cur!=null) Console.WriteLine(cur);
+                if(cur.left!=null) que.Enqueue(cur.left);
+                if(cur.right!=null) que.Enqueue(cur.right);
+                if(que.Count==0) break;
+                cur = que.Dequeue();
             }
         }
 

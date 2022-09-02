@@ -1,3 +1,9 @@
+using System.Runtime.ConstrainedExecution;
+using System.Collections.Specialized;
+using System.Text;
+using System.Buffers;
+using System.Collections;
+using System.ComponentModel;
 using System;
 
 
@@ -25,6 +31,12 @@ namespace vsTest
         public void funcEnd(string func)
         {
             Console.WriteLine("\n---------------- " + func + " ----------------\n\n");
+        }
+
+        public void printArrayInt(int[] arr)
+        {
+            for(int i=0;i<arr.Length;i++)
+                Console.Write(arr[i].ToString()+"  ");
         }
     }
 }

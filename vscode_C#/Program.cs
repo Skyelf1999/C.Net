@@ -17,10 +17,11 @@ namespace vsTest
             Leetcode leetcode = new Leetcode();
             // 测试用对象
             Test testPrograms = new Test();
-            testPrograms.test_LinkedList();
 
-            // testPrograms.test_List();
-            // int[] ret = leetcode.PlusOne(new int[]{9,9,9});
+            testPrograms.test_Tree();
+
+            // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
+            // Console.WriteLine(leetcode.MaxIncreaseKeepingSkyline(arr));
         }
 
     }
