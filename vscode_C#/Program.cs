@@ -18,7 +18,7 @@ namespace vsTest
             // 测试用对象
             Test testPrograms = new Test();
 
-            testPrograms.test_Tree();
+            testPrograms.test_Tuple();
 
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
             // Console.WriteLine(leetcode.MaxIncreaseKeepingSkyline(arr));

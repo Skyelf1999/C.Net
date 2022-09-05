@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace vsTest
@@ -33,6 +34,18 @@ namespace vsTest
             Game y = Game.MHR;
             Game z = Game.SC;
             Console.WriteLine("{0}, {1}, {2}",x,y,z+1);
+
+            utils.funcEnd(func);
+        }
+
+
+        public void test_Tuple()
+        {
+            string func = "元组";
+            utils.funcStart(func);
+
+            var tuple = Tuple.Create("dsh",23,true);
+            Console.WriteLine("姓名：{0}，年龄：{1}，性别：{2}",tuple.Item1,tuple.Item2,tuple.Item3?"男":"女");
 
             utils.funcEnd(func);
         }
@@ -104,6 +117,17 @@ namespace vsTest
             ht.Add("age",22);
             ht.Add(2,"name");
             Console.WriteLine(ht[2]);
+
+            utils.funcEnd(func);
+        }
+
+
+        public void test_Dic()
+        {
+            string func = "Hashtable";
+            utils.funcStart(func);
+
+            
 
             utils.funcEnd(func);
         }

@@ -48,7 +48,7 @@ namespace vsTest
         private int leaf;                          // 叶子总数
 
 
-        // 根据数组数据创建二叉树
+        // 队列建树
         public void createByIntArray(int[] arr)
         {
             // 保存数据
@@ -56,7 +56,7 @@ namespace vsTest
 
             // 借助队列进行创建
             Queue<TreeNode> help = new Queue<TreeNode>();
-            root = new TreeNode(arr[0]);
+            this.root = new TreeNode(arr[0]);
             TreeNode? cur = root;
             TreeNode? node = null;
             for(int i=1;i<arr.Length;i++)

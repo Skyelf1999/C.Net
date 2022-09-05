@@ -382,30 +382,53 @@ namespace vsTest
 
         
         // 题目：找到最长回文子串
-    public string LongestPalindrome(string s) 
-    {
-        string ret = "";
-        int n = s.Length;
-        int end = 2*n-1;
-
-        for(int i=0;i<end;i++)
+        public string LongestPalindrome(string s) 
         {
-            double mid = i/2.0;
-            int p = (int)(Math.Floor(mid));
-            int q = (int)(Math.Ceiling(mid));
-            // 向两侧扩散
-            while(p>-1 && q<n)
-            {
-                if(s[p]!=s[q]) break;
-                p--;
-                q++;
-            }
+            string ret = "";
+            int n = s.Length;
+            int end = 2*n-1;
 
-            int len = q-p-1;
-            if(len>ret.Length) ret = s.Substring(p+1,len);
+            for(int i=0;i<end;i++)
+            {
+                double mid = i/2.0;
+                int p = (int)(Math.Floor(mid));
+                int q = (int)(Math.Ceiling(mid));
+                // 向两侧扩散
+                while(p>-1 && q<n)
+                {
+                    if(s[p]!=s[q]) break;
+                    p--;
+                    q++;
+                }
+
+                int len = q-p-1;
+                if(len>ret.Length) ret = s.Substring(p+1,len);
+            }
+            return ret;
         }
-        return ret;
-    }
+
+
+        // 题目：寻找重复子树
+        // 存储访问过的节点和对应的子树字符串
+        Dictionary<string,TreeNode> history = new Dictionary<string,TreeNode>();
+        // 存储重复子树的根节点
+        HashSet<TreeNode> repeatNodes = new HashSet<TreeNode>();
+        public IList<TreeNode> FindDuplicateSubtrees(TreeNode root) 
+        {
+            dfs(root);
+            return new List<TreeNode>(repeatNodes);
+        }
+        public string dfs(TreeNode cur)
+        {
+            if(cur==null) return "";
+            // 子树字符串
+            string str = cur.data.ToString() + "(";
+            str = str + dfs(cur.left) + ")(";
+            str = str + dfs(cur.right) + ")";
+            if(history.ContainsKey(str)) repeatNodes.Add(history[str]);
+            else history.Add(str,cur);
+            return str;
+        }
 
     }
 }
