@@ -186,10 +186,10 @@ namespace vsTest
             tree.createByIntArray(arr);
             // 访问
             TreeVisit treeVisit = new TreeVisit();
-            treeVisit.dlr(tree.root,false);
-            treeVisit.ldr(tree.root,false);
-            treeVisit.lrd(tree.root,false);
-            treeVisit.BFS(tree.root);
+            // treeVisit.dlr(tree.root,false);
+            // treeVisit.ldr(tree.root,false);
+            // treeVisit.lrd(tree.root,false);
+            treeVisit.BFS(tree.root,true);
 
             utils.funcEnd(func);
         }

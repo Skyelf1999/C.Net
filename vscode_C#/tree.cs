@@ -235,19 +235,47 @@ namespace vsTest
 
 
         // 广度优先
-        public void BFS(TreeNode? cur)
+        public void BFS(TreeNode? cur,bool choice)
         {
             Console.WriteLine("进行BFS，起点：{0}",cur);
             Queue<TreeNode> que = new Queue<TreeNode>();
-            while(cur!=null)
+            if(!choice)
             {
-                if(cur!=null) Console.WriteLine(cur);
-                if(cur.left!=null) que.Enqueue(cur.left);
-                if(cur.right!=null) que.Enqueue(cur.right);
-                if(que.Count==0) break;
-                cur = que.Dequeue();
+                // 不分组
+                while(cur!=null)
+                {
+                    if(cur!=null) Console.WriteLine(cur);
+                    if(cur.left!=null) que.Enqueue(cur.left);
+                    if(cur.right!=null) que.Enqueue(cur.right);
+                    if(que.Count==0) break;
+                    cur = que.Dequeue();
+                }
+            }
+            else
+            {
+                // 分组
+                // List<List<TreeNode>> ret = new List<List<TreeNode>>();
+                List<TreeNode> floor = new List<TreeNode>();
+                que.Enqueue(cur);
+                while(que.Count!=0)
+                {
+                    while(que.Count!=0)
+                    {
+                        Console.WriteLine(que.Peek());
+                        floor.Add(que.Dequeue());
+                    }
+                    for(int i=0;i<floor.Count;i++)
+                    {
+                        if(floor[i].left!=null) que.Enqueue(floor[i].left);
+                        if(floor[i].right!=null) que.Enqueue(floor[i].right);
+                    }
+                    floor.Clear();
+                    Console.WriteLine();
+                }
             }
         }
+
+
 
     }
 }
