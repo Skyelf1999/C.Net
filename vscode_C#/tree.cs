@@ -7,7 +7,7 @@ namespace vsTest
     // 树叶节点
     class TreeNode
     {
-        public Object? data;                // 数据
+        public int? data;                // 数据
         public TreeNode? left  = null;      // 左子
         public TreeNode? right = null;      // 右子
         public bool flag = true;
@@ -62,7 +62,7 @@ namespace vsTest
             for(int i=1;i<arr.Length;i++)
             {
                 // 若这次即将加入新节点的是下一个操作节点的子，则更换当前操作节点
-                if(i>1 && i%2==1) 
+                if(i>1 && i%2==1 && help.Count>0) 
                 {
                     Console.WriteLine("上一操作节点添加完毕，节点：{0}；左子：{1}；右子：{2}",
                         cur,cur.left,cur.right);
@@ -70,9 +70,10 @@ namespace vsTest
                     Console.WriteLine("更换操作节点，当前节点为：{0}",cur);
                 }
                 // 根据数据创建新节点
-                node = new TreeNode(arr[i]);
+                if(arr[i]!=-999) node = new TreeNode(arr[i]);
+                else node = null;
                 // 若新节点不为空，则添加为当前操作节点的子节点
-                if(node.data!=null)
+                if(node!=null)
                 {
                     count++;
                     if(i%2==1)
@@ -88,7 +89,7 @@ namespace vsTest
                 }
                 else Console.WriteLine("该节点为空，不添加");
                 // 进队，准备作为之后的操作节点
-                help.Enqueue(node);
+                if(node!=null) help.Enqueue(node);
                 Console.WriteLine();
             }
             Console.WriteLine("上一操作节点添加完毕，节点：{0}；左子：{1}；右子：{2}",
@@ -102,6 +103,48 @@ namespace vsTest
             this.Deep = deep;
             this.Count = count;
             this.Leaf = leaf;
+        }
+
+
+        // 根据DLR和LDR结果创建树
+        public void createByDLRandLDR(int[] preorder,int[] inorder)
+        {
+            if(preorder==null || inorder==null) return;
+
+            Stack<int> st = new Stack<int>();
+            int index = 0;      // 指向当前节点的最后左后代
+            this.root = new TreeNode(preorder[0]);
+            st.Push(this.root);
+
+            for(int i=1;i<preorder.Length;i++)
+            {
+                TreeNode cur = st.Peek();
+                if(cur.data!=inorder[index])
+                {
+                    cur.left = new TreeNode(preorder[i]);
+                    st.Push(cur.left);
+                }
+                else
+                {
+                    // 此时中序index指向的节点正是栈顶节点
+                    while(st.Count>0 && st.Peek.data==inorder[index])
+                    {
+                        cur = st.Pop();
+                        index++;
+                    }
+                    cur.right = new TreeNode(preorder[i]);
+                    st.Push(node.right);
+                }
+            }
+
+
+        }
+
+
+        // 根据LDR和LRD结果创建树
+        public void createByLDRandLRD(int[] inorder,int[] postorder)
+        {
+
         }
         
 
@@ -119,6 +162,7 @@ namespace vsTest
         }
 
     }
+
 
 
     // 树访问类
@@ -273,6 +317,22 @@ namespace vsTest
                     Console.WriteLine();
                 }
             }
+        }
+
+
+        public int[] toArrayInt(TreeNode cur)
+        {
+            List<int> list = new List<int>();
+            Queue<TreeNode> que = new Queue<TreeNode>();
+            while(cur!=null)
+            {
+                if(cur!=null) list.Add((int)cur.data);
+                if(cur.left!=null) que.Enqueue(cur.left);
+                if(cur.right!=null) que.Enqueue(cur.right);
+                if(que.Count==0) break;
+                cur = que.Dequeue();
+            }
+            return (int[])list.ToArray();
         }
 
 
