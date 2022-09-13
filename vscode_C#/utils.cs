@@ -38,5 +38,11 @@ namespace vsTest
             for(int i=0;i<arr.Length;i++)
                 Console.Write(arr[i].ToString()+"  ");
         }
+
+        public void printArrayString(string[] arr)
+        {
+            for(int i=0;i<arr.Length;i++)
+                Console.Write(arr[i]+"  ");
+        }
     }
 }

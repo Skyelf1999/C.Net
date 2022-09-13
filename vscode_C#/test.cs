@@ -51,6 +51,25 @@ namespace vsTest
         }
 
 
+        public void test_HashSet()
+        {
+            string func = "哈希集合";
+            utils.funcStart(func);
+
+            HashSet<int> hs = new HashSet<int>();
+            Console.WriteLine("存入1、4、10");
+            hs.Add(1);
+            hs.Add(4);
+            hs.Add(10);
+            Console.WriteLine("10是否在集合中：{0}",hs.Contains(10));
+            int[] arr = hs.ToArray();
+            utils.printArrayInt(arr);
+
+
+            utils.funcEnd(func);
+        }
+
+
         public void test_List()
         {
             string func = "List";
@@ -63,6 +82,7 @@ namespace vsTest
             string info = string.Join(",", (string[])list.ToArray());
             Console.WriteLine(info);
             Console.WriteLine("最后一个元素：{0}",list[list.Count-1]);
+            utils.printArrayString(list.ToArray());
 
             utils.funcEnd(func);
         }

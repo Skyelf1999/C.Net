@@ -12,7 +12,7 @@ namespace vsTest
         public TreeNode? right = null;      // 右子
         public bool flag = true;
 
-        public TreeNode(Object? data=null)
+        public TreeNode(int? data=null)
         {
             if(Convert.ToInt32(data)!=-999) this.data = data;
             else this.data = null;
@@ -111,7 +111,7 @@ namespace vsTest
         {
             if(preorder==null || inorder==null) return;
 
-            Stack<int> st = new Stack<int>();
+            Stack<TreeNode> st = new Stack<TreeNode>();
             int index = 0;      // 指向当前节点的最后左后代
             this.root = new TreeNode(preorder[0]);
             st.Push(this.root);
@@ -127,13 +127,13 @@ namespace vsTest
                 else
                 {
                     // 此时中序index指向的节点正是栈顶节点
-                    while(st.Count>0 && st.Peek.data==inorder[index])
+                    while(st.Count>0 && st.Peek().data==inorder[index])
                     {
                         cur = st.Pop();
                         index++;
                     }
                     cur.right = new TreeNode(preorder[i]);
-                    st.Push(node.right);
+                    st.Push(cur.right);
                 }
             }
 

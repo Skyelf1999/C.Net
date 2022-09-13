@@ -409,7 +409,7 @@ namespace vsTest
 
 
         // 题目：寻找重复子树
-        // 存储访问过的节点和对应的子树字符串
+        // 存储访问过的子树字符串和对应的节点
         Dictionary<string,TreeNode> history = new Dictionary<string,TreeNode>();
         // 存储重复子树的根节点
         HashSet<TreeNode> repeatNodes = new HashSet<TreeNode>();
@@ -425,9 +425,39 @@ namespace vsTest
             string str = cur.data.ToString() + "(";
             str = str + dfs(cur.left) + ")(";
             str = str + dfs(cur.right) + ")";
+            // 历史记录中有此子串 --> 有重复子树
             if(history.ContainsKey(str)) repeatNodes.Add(history[str]);
             else history.Add(str,cur);
             return str;
+        }
+
+
+        // 题目：交换数字，使原数最大
+        public int MaximumSwap(int num) 
+        {
+            char[] res = num.ToString().ToCharArray();
+            int maxIndex;
+            char temp;
+
+            for(int i=0;i<res.Length-1;i++)
+            {
+                Console.WriteLine("当前位数字：{0}",res[i]);
+                maxIndex = i;
+                for(int j=i+1;j<res.Length;j++)
+                    if(Convert.ToInt32(res[j])>Convert.ToInt32(res[i]))
+                        if(Convert.ToInt32(res[j])>=Convert.ToInt32(res[maxIndex]))
+                            maxIndex = j;
+                if(maxIndex>i)
+                {
+                    Console.WriteLine("交换目标：{0}",res[maxIndex]);
+                    temp = res[maxIndex];
+                    res[maxIndex] = res[i];
+                    res[i] = temp;
+                    return Convert.ToInt32(new string(res));
+                }
+            }
+            Console.WriteLine("无可交换数字");
+            return Convert.ToInt32(new string(res));
         }
 
     }
