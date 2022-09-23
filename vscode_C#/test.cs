@@ -24,6 +24,44 @@ namespace vsTest
             utils.funcEnd(func);
         }
 
+        public void test_Char()
+        {
+            string func = "char";
+            utils.funcStart(func);
+
+            char x= '1';
+            Console.WriteLine("比较字符'0'和'1'：{0}\n",x<'1');
+
+            for(int i=0;i<4;i++)
+            {
+                x = (char)((int)x+1);
+                Console.WriteLine(x);
+            }
+
+            char[] arr_char = {'h','e','l','l','o'};
+
+            utils.funcEnd(func);
+        }
+
+
+        public void test_String()
+        {
+            string func = "字符串";
+            utils.funcStart(func);
+
+            string str = "forever";
+            char[] arr = str.ToCharArray();
+            List<char> list = new List<char>(arr);
+            Console.WriteLine(list.Contains('f'));
+            
+            Console.WriteLine("\n测试分割功能：");
+            string sentence = " something  for   nothing ";
+            string[] res = sentence.Split(" ");
+            utils.printArrayString(res);
+
+            utils.funcEnd(func);
+        }
+
 
         public void test_Enum()
         {
@@ -51,6 +89,32 @@ namespace vsTest
         }
 
 
+        public void test_Array()
+        {
+            string func = "数组";
+            utils.funcStart(func);
+
+            string[] arr = new string[]{"dsh","zdd","htm"};
+            foreach(string s in arr) Console.WriteLine(s);
+
+            Console.WriteLine("\n以下测试二维数组\n");
+            List<int[]> list = new List<int[]>();
+            list.Add(new int[]{1,4});
+            list.Add(new int[]{7,10});
+            list.Add(new int[]{3,5});
+            list.Add(new int[]{2,8});
+            int[][] arr_2 = list.ToArray();
+            Console.WriteLine(arr_2[1][0]);
+
+            Console.WriteLine("\n数组自定义排序\n");
+            Array.Sort(arr_2,(a,b) => a[0]-b[0]);
+            foreach(int[] x in arr_2) utils.printArrayInt(x);
+
+
+            utils.funcEnd(func);
+        }
+
+
         public void test_HashSet()
         {
             string func = "哈希集合";
@@ -64,6 +128,10 @@ namespace vsTest
             Console.WriteLine("10是否在集合中：{0}",hs.Contains(10));
             int[] arr = hs.ToArray();
             utils.printArrayInt(arr);
+
+            Console.WriteLine("\n数组转换成集合");
+            ISet<int> set = new HashSet<int>(arr);
+            Console.WriteLine("集合包含4？\t{0}",set.Contains(4));
 
 
             utils.funcEnd(func);
@@ -82,7 +150,12 @@ namespace vsTest
             string info = string.Join(",", (string[])list.ToArray());
             Console.WriteLine(info);
             Console.WriteLine("最后一个元素：{0}",list[list.Count-1]);
-            utils.printArrayString(list.ToArray());
+            Console.WriteLine("\n在指定位置插入一个元素：");
+            list.Insert(1,"tm");
+            utils.printArrayString(list.ToArray(),false);
+            Console.WriteLine("\n删除一个中间元素：");
+            list.RemoveAt(1);
+            utils.printArrayString(list.ToArray(),false);
 
             utils.funcEnd(func);
         }
@@ -144,10 +217,19 @@ namespace vsTest
 
         public void test_Dic()
         {
-            string func = "Hashtable";
+            string func = "字典";
             utils.funcStart(func);
 
-            
+            Dictionary<string,int> dict = new Dictionary<string,int>();
+            dict.Add("dsh",3400);
+            dict.Add("wjl",2300);
+            dict.Add("zdd",5000);
+            Console.WriteLine("dsh的分数：{0}，zdd的分数：{1}",dict["dsh"],dict["zdd"]);
+            Console.WriteLine("是否存在key：dsh\t{0}",dict.ContainsKey("dsh"));
+            Console.WriteLine("是否存在value：2300\t{0}",dict.ContainsValue(2300));
+            Console.WriteLine("循环输出字典");
+            foreach(KeyValuePair<string,int> kv in dict)
+                Console.WriteLine("{0}\t{1}",kv.Key,kv.Value);
 
             utils.funcEnd(func);
         }

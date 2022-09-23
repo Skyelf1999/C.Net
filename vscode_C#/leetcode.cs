@@ -14,6 +14,8 @@ namespace vsTest
             
         */
 
+        public Utils utils = new Utils();
+
 
         // 数组特征值
         public int SpecialArray(int[] nums) 
@@ -334,52 +336,6 @@ namespace vsTest
             return ret;
         }
 
-
-        // 城市天际线
-        /*
-            在不改变四个方向视图形状的基础上
-            尽可能增大高度
-            返回增加的高度和
-        */
-        public int MaxIncreaseKeepingSkyline(int[][] grid) 
-        {
-            // 每个楼可增高高度为 min{所在行高度最大值, 所在列高度最大值}
-            int ret = 0;
-            int[] rowMax = new int[grid.Length];
-            int[] colMax = new int[grid[0].Length];
-            int i,j;
-
-            // 初始化列最大值
-            for(j=0;j<grid[0].Length;j++)
-            {
-                colMax[j] = 0;
-                for(i=0;i<grid.Length;i++)
-                    if(grid[i][j]>colMax[j]) colMax[j] = grid[i][j];
-                Console.WriteLine("第{0}列最大值：{1}",j,colMax[j]);
-            }
-
-            // 初始化行最大值
-            for(i=0;i<grid.Length;i++)
-            {
-                rowMax[i] = 0;
-                for(j=0;j<grid[i].Length;j++)
-                    if(grid[i][j]>rowMax[i]) rowMax[i] = grid[i][j];
-                Console.WriteLine("第{0}行最大值：{1}",i,rowMax[i]);
-            }
-
-            // 增高
-            for(i=0;i<grid.Length;i++)
-            {
-                for(j=0;j<grid[i].Length;j++)
-                {
-                    int n = rowMax[i]>=colMax[j]?colMax[j]:rowMax[i];
-                    if(grid[i][j]<n) ret += n-grid[i][j];
-                }
-            }
-
-            return ret;
-        }
-
         
         // 题目：找到最长回文子串
         public string LongestPalindrome(string s) 
@@ -388,6 +344,7 @@ namespace vsTest
             int n = s.Length;
             int end = 2*n-1;
 
+            // 以各字符为中心，寻找回文子串
             for(int i=0;i<end;i++)
             {
                 double mid = i/2.0;
@@ -433,6 +390,9 @@ namespace vsTest
 
 
         // 题目：交换数字，使原数最大
+        /*
+            需要对数字进行位操作，可以先转换成字符数组
+        */
         public int MaximumSwap(int num) 
         {
             char[] res = num.ToString().ToCharArray();
@@ -459,6 +419,90 @@ namespace vsTest
             Console.WriteLine("无可交换数字");
             return Convert.ToInt32(new string(res));
         }
+
+
+        // 题目：字母异位词分组
+        /*
+            由相同字母构成的单词为异位词
+            可先将每个单词字母排序后，存储到对应的组别
+        */
+        public void GroupAnagrams(string[] strs) 
+        {
+            Dictionary<string,IList<string>> dict = new Dictionary<string,IList<string>>();
+            char[] arr;
+            string str;
+
+            // 将各字符串分组存放
+            for(int i=0;i<strs.Length;i++)
+            {
+                // 得到排序后的字符串
+                arr = strs[i].ToCharArray();
+                Array.Sort(arr);
+                str = new string(arr);
+                Console.WriteLine("原单词：{0}，组别：{1}",strs[i],str);
+                // 存放
+                // if(!dict.ContainsKey(str)) dict.Add(str,new List<string>({strs[i]}));
+                dict[str].Add(strs[i]);
+            }
+
+        }
+
+
+        // 题目：求最长无重复字符子串的长度
+        public void LengthOfLongestSubstring(string s) 
+        {
+            int ret = 1;
+            Dictionary<char,int> history = new Dictionary<char,int>();
+            int i=0,j=0;
+            while(i<s.Length && j<s.Length)
+            {
+                while(j<s.Length)
+                {
+                    Console.WriteLine("当前位置：{0}，字符：{1}",j,s[j]);
+                    if(history.ContainsKey(s[j]))
+                        if(history[s[j]]>=i) break;
+                        else history[s[j]] = j;
+                    else history.Add(s[j],j);
+                    j++;
+                }
+                if(j-i>ret) ret = j-i;
+                Console.WriteLine("更新结果，起点：{0}，终点：{1}，长度：{2}\n",i,j-1,ret);
+                if(j<s.Length) i = history[s[j]]+1;
+            }
+        }
+
+
+        public void Test() 
+        {
+            int[] nums = new int[]{2,3,1,2,4,3};
+            int target = 7;
+
+            int i=0,j=0;
+            int ret = nums.Length+1;
+            int sum = nums[j];
+
+            while(j<nums.Length)
+            {
+                if(sum<target)
+                {
+                    j++;
+                    if(j<nums.Length) sum += nums[j];
+                    else break;
+                }
+                else
+                {
+                    Console.WriteLine("当前子数组：{0}~{1}，长度为 {2}",i,j,j-i+1);
+                    ret = Math.Min(ret,j-i+1);
+                    sum -= nums[i];
+                    i++;
+                }
+            }
+            
+            Console.WriteLine("最小长度：{0}",ret);
+        }
+
+
+        
 
     }
 }
