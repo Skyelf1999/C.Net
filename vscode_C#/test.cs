@@ -24,6 +24,18 @@ namespace vsTest
             utils.funcEnd(func);
         }
 
+
+        public void test_Struct()
+        {
+            string func = "结构体";
+            utils.funcStart(func);
+
+
+
+            utils.funcEnd(func);
+        }
+
+
         public void test_Char()
         {
             string func = "char";
@@ -120,7 +132,7 @@ namespace vsTest
             string func = "哈希集合";
             utils.funcStart(func);
 
-            HashSet<int> hs = new HashSet<int>();
+            HashSet<int> hs = new HashSet<int>(new int[]{2,11,32,99});
             Console.WriteLine("存入1、4、10");
             hs.Add(1);
             hs.Add(4);
@@ -309,6 +321,27 @@ namespace vsTest
             string[] games = {"DotA2","MHR","HOS"};
             x.games = new List<string>(games);
             Console.WriteLine(x);
+
+            Console.WriteLine("\n测试引用类型特性");
+            List<TreeNode> nodes = new List<TreeNode>();
+            TreeNode root = new TreeNode(0);
+            TreeNode cur;
+            nodes.Add(root);
+            for(int i=0;i<5;i++)
+            {
+                TreeNode node = new TreeNode(i+1);
+                nodes.Add(node);
+                cur = nodes[i];
+                cur.left = node;
+            }
+            Console.WriteLine(root.left);
+            ISet<TreeNode> set = new HashSet<TreeNode>();
+            set.Add(new TreeNode(11));
+            set.Add(root);
+            set.Add(new TreeNode(11));
+            set.Add(root);
+            foreach(TreeNode temp in set) Console.WriteLine(temp);
+            
 
             utils.funcEnd(func);
         }

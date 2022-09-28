@@ -472,6 +472,60 @@ namespace vsTest
         }
 
 
+        // 题目：字符串解码
+        /*
+            编码规则为: k[encoded_string]
+            表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。
+        */
+        public void DecodeString(string s) 
+        {
+            if(s.Length<4) Console.WriteLine(s);
+
+            string ret = "";
+            Stack<char> st = new Stack<char>();
+            IList<char> buff = new List<char>();
+            int k = 0;      // 嵌套深度
+
+            for(int i=0;i<s.Length;i++)
+            {
+                Console.WriteLine("当前字符：{0}",s[i]);
+                if(k==0 && isLetter(s[i])) ret+=s[i];
+                else
+                {
+                    if(s[i]=='[') k++;
+                    if(isNum(s[i]) || isLetter(s[i]) || s[i]=='[') st.Push(s[i]);
+                    else
+                    {
+                        // 遇到']'，开始弹出
+                        k--;
+                        while(st.Peek()!='[') buff.Insert(0,st.Pop());
+                        st.Pop();   // 弹出'['
+                        Console.WriteLine("重复内容：{0}，重复次数：{1}",new string(buff.ToArray()),st.Peek()-48);
+                        if(k==0)    // 嵌套层为0，加入结果
+                            for(int j=st.Pop()-48;j>0;j--) ret += new string(buff.ToArray());
+                        else        // 嵌套层不为0，重新入栈，等待遍历到该嵌套层结束
+                            for(int j=st.Pop()-48;j>0;j--)
+                                foreach(char c in buff) st.Push(c);
+                        buff.Clear();
+                    }
+                }
+                Console.WriteLine(ret);
+                Console.WriteLine();
+            }
+        }
+        public bool isLetter(char c)
+        {
+            if((int)c>57&&(int)c<123&&c!='['&&c!=']') return true;
+            else return false;
+        }
+        public bool isNum(char c)
+        {
+            if((int)c<58) return true;
+            else return false;
+        }
+        
+
+
         public void Test() 
         {
             int[] nums = new int[]{2,3,1,2,4,3};
