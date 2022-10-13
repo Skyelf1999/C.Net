@@ -169,6 +169,13 @@ namespace vsTest
             list.RemoveAt(1);
             utils.printArrayString(list.ToArray(),false);
 
+            Console.WriteLine("\n下面测试int列表");
+            List<int> list_int = new List<int>(new int[]{2,4,3,1});
+            list_int.Sort();
+            utils.printArrayInt(list_int.ToArray());
+            // list_int.Sort(false);
+            // utils.printArrayString(list_int.ToArray(),false);
+
             utils.funcEnd(func);
         }
 

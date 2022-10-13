@@ -528,31 +528,25 @@ namespace vsTest
 
         public void Test() 
         {
-            int[] nums = new int[]{2,3,1,2,4,3};
-            int target = 7;
+            MyLinkedList lls = new MyLinkedList();
+            lls.AddAtHead(7);
+            lls.printSelf();
+            lls.AddAtHead(2);
+            lls.printSelf();
+            lls.AddAtHead(1);
+            lls.printSelf();
+            lls.AddAtIndex(3,0);
+            lls.printSelf();
 
-            int i=0,j=0;
-            int ret = nums.Length+1;
-            int sum = nums[j];
+            lls.DeleteAtIndex(2);
+            lls.printSelf();
 
-            while(j<nums.Length)
-            {
-                if(sum<target)
-                {
-                    j++;
-                    if(j<nums.Length) sum += nums[j];
-                    else break;
-                }
-                else
-                {
-                    Console.WriteLine("当前子数组：{0}~{1}，长度为 {2}",i,j,j-i+1);
-                    ret = Math.Min(ret,j-i+1);
-                    sum -= nums[i];
-                    i++;
-                }
-            }
-            
-            Console.WriteLine("最小长度：{0}",ret);
+            lls.AddAtHead(6);
+            lls.AddAtTail(4);
+            lls.printSelf();
+
+            Console.WriteLine(lls.Get(4)); 
+
         }
 
 
