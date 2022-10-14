@@ -22,7 +22,10 @@ namespace vsTest
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
-            leetcode.Test();
+            // leetcode.Test();
+            TreeNode a = new TreeNode(2);
+            TreeNode b = new TreeNode(2);
+            Console.WriteLine(a==b);
 
         }
 
