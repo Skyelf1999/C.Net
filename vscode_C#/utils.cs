@@ -53,6 +53,18 @@ namespace vsTest
                 else Console.Write(arr[i]+"  ");
         }
 
+        public void printQueueInt(Queue<int> que)
+        {
+            while(que.Count>0)
+                Console.Write(que.Dequeue()+"  ");
+        }
+
+        public void printDic(Dictionary<int,int> dic)
+        {
+            foreach(int k in dic.Keys)
+                Console.WriteLine("{0}--{1}",k,dic[k]);
+        }
+
 
         // 判断完全平方数
         public bool isSqr(int n)
@@ -65,6 +77,23 @@ namespace vsTest
             }
             if(n==0) return true;
             return false;
+        }
+
+        public void searchIntArr(int[] data,int target)
+        {
+            Array.Sort(data);
+            int low=0,high=data.Length;
+            while (low<=high)
+            {
+                if(data[(low+high)/2]==target)
+                {
+                    Console.WriteLine("目标下标：{0}",(low+high)/2);
+                    return;
+                }
+                if(data[(low+high)/2]>target) high = (low+high)/2-1;
+                else low = (low+high)/2 + 1;
+            }
+            Console.WriteLine("目标不存在");
         }
     }
 }

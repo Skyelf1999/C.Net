@@ -528,24 +528,37 @@ namespace vsTest
 
         public void Test() 
         {
-            MyLinkedList lls = new MyLinkedList();
-            lls.AddAtHead(7);
-            lls.printSelf();
-            lls.AddAtHead(2);
-            lls.printSelf();
-            lls.AddAtHead(1);
-            lls.printSelf();
-            lls.AddAtIndex(3,0);
-            lls.printSelf();
+            int[] fruits = {0,1,2}; 
 
-            lls.DeleteAtIndex(2);
-            lls.printSelf();
+            // 只有两种数字的最长长度
+            int head=0,ret=0,i;
+            Dictionary<int,int> blank = new Dictionary<int,int>();    // 种类-数目
 
-            lls.AddAtHead(6);
-            lls.AddAtTail(4);
-            lls.printSelf();
+            for(i=0;i<fruits.Length;i++)
+            {
+                if(blank.ContainsKey(fruits[i])) blank[fruits[i]]++;
+                else    // 遇到新的种类
+                {
+                    if(blank.Count>1) 
+                    {
+                        // 已有两种，记录当前长度
+                        ret = Math.Max(ret,i-head);
+                        // 更新head
+                        while(blank.Count>1)
+                        {
+                            blank[fruits[head]]--;
+                            if(blank[fruits[head]]==0) blank.Remove(fruits[head]);
+                            head++;
+                        }
+                        Console.WriteLine("新head：{0}",head);
+                    }
+                    blank.Add(fruits[i],1);
+                    Console.WriteLine();
+                }
+                utils.printDic(blank);
+            }
 
-            Console.WriteLine(lls.Get(4)); 
+            Console.WriteLine(Math.Max(ret,i-head));
 
         }
 

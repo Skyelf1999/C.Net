@@ -5,7 +5,7 @@ namespace vsTest
     class Node
     {
         public int val;
-        public Node next = null;
+        public Node? next = null;
         public Node(int v)
         {
             val = v;

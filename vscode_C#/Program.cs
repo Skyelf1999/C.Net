@@ -17,15 +17,23 @@ namespace vsTest
             Leetcode leetcode = new Leetcode();
             // 测试用对象
             Test testPrograms = new Test();
+            // 插入排序
+            InsertSort insertSort = new InsertSort();
 
-            // testPrograms.test_List();
+            // testPrograms.test_Out(34,out x,out y);
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
             // leetcode.Test();
-            TreeNode a = new TreeNode(2);
-            TreeNode b = new TreeNode(2);
-            Console.WriteLine(a==b);
+            
+            insertSort.Shell(new Data<int>(2),
+                                new Data<int>(5),
+                                new Data<int>(1),
+                                new Data<int>(0),
+                                new Data<int>(4),
+                                new Data<int>(1));
+
+            
 
         }
 
@@ -33,26 +41,41 @@ namespace vsTest
 
 
     // 测试用数据类
-    class Data
+    class Data<T>
     {
-        public int dataInt = -999;
+        int index;
+        public T? data;
+        ArrayList dataList = new ArrayList();
+
         private int p = 10;
 
-        public Data(int dataInt)
+        public int Index
         {
-            this.dataInt = dataInt;
+            get => index;
+            set => index = value;
         }
-
         public int P{
             get { return p; }
             set { p = value; }
         }
 
+        // 构造方法
+        public Data(int index)
+        {
+            this.index = index;
+            dataList.Add("index = "+index.ToString());
+        }
+        public Data(int index,T data)
+        {
+            this.index = index;
+            this.data = data;
+            dataList.Add("index = "+index.ToString());
+            dataList.Add("data = "+data.ToString());
+        }
+
         public override string ToString()
         {
-            ArrayList list = new ArrayList();
-            list.Add("dataInt："+dataInt.ToString());
-            string info = string.Join("；",(string[])list.ToArray(typeof(string)));
+            string info = string.Join("；",(string[])dataList.ToArray(typeof(string)));
             return info;
         }
     }

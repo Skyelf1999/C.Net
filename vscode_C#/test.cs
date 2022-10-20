@@ -24,6 +24,18 @@ namespace vsTest
             utils.funcEnd(func);
         }
 
+        // 测试输出参数
+        public void test_Out(int a,out int x,out int y)
+        {
+            string func = "输出参数out";
+            utils.funcStart(func);
+
+            x = a/10;
+            y = a%10;
+
+            utils.funcEnd(func);
+        }
+
 
         public void test_Struct()
         {
@@ -189,7 +201,7 @@ namespace vsTest
             al.Add("你好");
             al.Add(100);
             // al.Add(true);
-            al.Add(new Data(22));
+            al.Add(new Data<int>(22));
             Console.WriteLine(al);
 
             utils.funcEnd(func);
@@ -205,10 +217,10 @@ namespace vsTest
             ll.AddLast("dsh");
             ll.AddLast("起名难");
             ll.AddFirst("开头");
-            LinkedListNode<string> head = ll.First;
-            head.Value = "链表开头";
+            LinkedListNode<string>? head = ll.First;
+            if(head!=null) head.Value = "链表开头";
             ll.AddAfter(head,new LinkedListNode<string>("内容为"));
-            LinkedListNode<string> cur = head;
+            LinkedListNode<string>? cur = head;
             while(cur!=null)
             {
                 Console.WriteLine(cur.Value);
