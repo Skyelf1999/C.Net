@@ -24,6 +24,16 @@ namespace vsTest
             utils.funcEnd(func);
         }
 
+        public void test_Params(params int[] arr)
+        {
+            string func = "传递参数Params";
+            utils.funcStart(func);
+
+            utils.printArrayInt(arr);
+
+            utils.funcEnd(func);
+        }
+
         // 测试输出参数
         public void test_Out(int a,out int x,out int y)
         {

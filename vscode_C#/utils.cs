@@ -65,6 +65,15 @@ namespace vsTest
                 Console.WriteLine("{0}--{1}",k,dic[k]);
         }
 
+        public void printDataInt(params Data<int>[] arr)
+        {
+            printDataIntArr(arr);
+        }
+        public void printDataIntArr(Data<int>[] arr)
+        {
+            foreach(Data<int> x in arr) Console.WriteLine(x);
+        }
+
 
         // 判断完全平方数
         public bool isSqr(int n)

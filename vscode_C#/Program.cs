@@ -19,14 +19,16 @@ namespace vsTest
             Test testPrograms = new Test();
             // 插入排序
             InsertSort insertSort = new InsertSort();
+            SwapSort swapSort = new SwapSort();
+            SelectSort selectSort = new SelectSort();
 
-            // testPrograms.test_Out(34,out x,out y);
+            // testPrograms.test_Params(new int[]{2,3,5});
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
             // leetcode.Test();
             
-            insertSort.Shell(new Data<int>(2),
+            selectSort.Direct(new Data<int>(2),
                                 new Data<int>(5),
                                 new Data<int>(1),
                                 new Data<int>(0),

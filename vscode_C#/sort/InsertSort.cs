@@ -37,7 +37,7 @@ namespace vsTest
                 arr[j+1]=cur;
             }
 
-            printDataInt(arr);
+            utils.printDataInt(arr);
             utils.funcEnd(func);
         }
 
@@ -71,7 +71,7 @@ namespace vsTest
                     // 移动
                     for(int j=i-1;j>=low;j--) arr[j+1]=arr[j];
                     arr[low] = cur;
-                    printDataInt(arr);
+                    utils.printDataInt(arr);
                     Console.WriteLine("元素：{1},合适位置：{0}\n",low,cur);
                 }
 
@@ -91,7 +91,7 @@ namespace vsTest
             while(gap>0)
             {
                 for(int i=gap;i<arr.Length;i++)
-                    // 从i开始，间隔gap进行冒泡排序
+                    // 从i=gap开始（防止没有上一个比较元素），间隔gap进行冒泡排序
                     for(int j=i;j>=gap;j-=gap)
                     {
                         cur = arr[j];
@@ -104,20 +104,13 @@ namespace vsTest
                 gap = gap/2;
             }
 
-            printDataInt(arr);
+            utils.printDataInt(arr);
             utils.funcEnd(func);
         }
 
         
 
-        public void printDataInt(params Data<int>[] arr)
-        {
-            printDataIntArr(arr);
-        }
-        public void printDataIntArr(Data<int>[] arr)
-        {
-            foreach(Data<int> x in arr) Console.WriteLine(x);
-        }
+        
 
 
 
