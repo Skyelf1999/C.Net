@@ -22,25 +22,23 @@ namespace vsTest
             SwapSort swapSort = new SwapSort();
             SelectSort selectSort = new SelectSort();
 
-            // testPrograms.test_Params(new int[]{2,3,5});
+            // testPrograms.test_Tuple();
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
-            // leetcode.Test();
+            leetcode.Test();
             
-            selectSort.Direct(new Data<int>(2),
-                                new Data<int>(5),
-                                new Data<int>(1),
-                                new Data<int>(0),
-                                new Data<int>(4),
-                                new Data<int>(1));
-
-            
-
+            // selectSort.Direct(new Data<int>(2),
+            //                     new Data<int>(5),
+            //                     new Data<int>(1),
+            //                     new Data<int>(0),
+            //                     new Data<int>(4),
+            //                     new Data<int>(1));
         }
+        
 
     }
-
+    
 
     // 测试用数据类
     class Data<T>

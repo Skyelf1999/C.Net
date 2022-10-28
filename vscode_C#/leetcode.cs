@@ -528,37 +528,39 @@ namespace vsTest
 
         public void Test() 
         {
-            int[] fruits = {0,1,2}; 
+            int[] nums = new int[]{2,5,7,8,10};
+            int k = 2;
+            /*
+            允许的子数组和 与 分割出的子数组数量 成反比
+            则：允许的子数组和大，子数组数量越多
+            */
+            Array.Sort(nums);
 
-            // 只有两种数字的最长长度
-            int head=0,ret=0,i;
-            Dictionary<int,int> blank = new Dictionary<int,int>();    // 种类-数目
+            // 数组最大值<=允许的子数组和<=数组和
+            int low=nums[nums.Length-1],high=0;
+            for(int i=0;i<nums.Length;i++) high+=nums[i];
 
-            for(i=0;i<fruits.Length;i++)
+            
+            while(low<high)
             {
-                if(blank.ContainsKey(fruits[i])) blank[fruits[i]]++;
-                else    // 遇到新的种类
-                {
-                    if(blank.Count>1) 
+                Console.WriteLine("low={0} high={1}",low,high);
+                int sumMax = low + (high-low)/2;
+                int n=1;    // 在给定子数组最大值下分割出的子数组数量
+                for(int i=0;i<nums.Length;i++)
+                    if(sumMax-nums[i]<0)
                     {
-                        // 已有两种，记录当前长度
-                        ret = Math.Max(ret,i-head);
-                        // 更新head
-                        while(blank.Count>1)
-                        {
-                            blank[fruits[head]]--;
-                            if(blank[fruits[head]]==0) blank.Remove(fruits[head]);
-                            head++;
-                        }
-                        Console.WriteLine("新head：{0}",head);
+                        n++;
+                        sumMax = low + (high-low)/2;
                     }
-                    blank.Add(fruits[i],1);
-                    Console.WriteLine();
-                }
-                utils.printDic(blank);
+                    else sumMax -= nums[i];
+                // 对比当前分法下得到的子数组数量 与 要求的数量
+                sumMax = low + (high-low)/2;
+                if(n<=k) high = sumMax;
+                else low = sumMax+1;
+                Console.WriteLine("low={0} sumMax={1} n={2} high={3}\n",low,sumMax,n,high);
             }
 
-            Console.WriteLine(Math.Max(ret,i-head));
+            Console.WriteLine(low);
 
         }
 

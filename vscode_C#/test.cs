@@ -24,6 +24,11 @@ namespace vsTest
             utils.funcEnd(func);
         }
 
+        public void test(HashSet<int> set)
+        {
+            set.Add(1);
+        }
+
         public void test_Params(params int[] arr)
         {
             string func = "传递参数Params";
@@ -118,6 +123,8 @@ namespace vsTest
 
             var tuple = Tuple.Create("dsh",23,true);
             Console.WriteLine("姓名：{0}，年龄：{1}，性别：{2}",tuple.Item1,tuple.Item2,tuple.Item3?"男":"女");
+            Tuple<string,int> x = new Tuple<string,int>("dsh",23);
+            Console.WriteLine("{0}  {1}",x.Item1,x.Item2);
 
             utils.funcEnd(func);
         }
