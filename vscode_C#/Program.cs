@@ -26,7 +26,7 @@ namespace vsTest
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
-            leetcode.Test();
+            // leetcode.Test();
             
             // selectSort.Direct(new Data<int>(2),
             //                     new Data<int>(5),
@@ -34,9 +34,12 @@ namespace vsTest
             //                     new Data<int>(0),
             //                     new Data<int>(4),
             //                     new Data<int>(1));
+
+            int[,,] arr = new int[2,3,4];
+            Console.WriteLine(arr.Length);
+
         }
         
-
     }
     
 

@@ -528,39 +528,27 @@ namespace vsTest
 
         public void Test() 
         {
-            int[] nums = new int[]{2,5,7,8,10};
-            int k = 2;
-            /*
-            允许的子数组和 与 分割出的子数组数量 成反比
-            则：允许的子数组和大，子数组数量越多
-            */
-            Array.Sort(nums);
+            string sequence = "a";
+            string word = "a";
 
-            // 数组最大值<=允许的子数组和<=数组和
-            int low=nums[nums.Length-1],high=0;
-            for(int i=0;i<nums.Length;i++) high+=nums[i];
-
-            
-            while(low<high)
+            int max = 0;
+            for(int i=0;i<sequence.Length-word.Length+1;i++)
             {
-                Console.WriteLine("low={0} high={1}",low,high);
-                int sumMax = low + (high-low)/2;
-                int n=1;    // 在给定子数组最大值下分割出的子数组数量
-                for(int i=0;i<nums.Length;i++)
-                    if(sumMax-nums[i]<0)
+                if(sequence[i]==word[0])    // 发现相同字符，开始对比
+                {
+                    Console.WriteLine("在 i={0} 处发现相同字符，开始对比",i);
+                    int j;
+                    int n=0;
+                    for(j=i;j<sequence.Length;j++)
                     {
-                        n++;
-                        sumMax = low + (high-low)/2;
+                        if(!(sequence[j]==word[(j-i)%word.Length])) break;
+                        if((j-i)%word.Length==word.Length-1) n++;
                     }
-                    else sumMax -= nums[i];
-                // 对比当前分法下得到的子数组数量 与 要求的数量
-                sumMax = low + (high-low)/2;
-                if(n<=k) high = sumMax;
-                else low = sumMax+1;
-                Console.WriteLine("low={0} sumMax={1} n={2} high={3}\n",low,sumMax,n,high);
+                    if(n>1) i+=(n-1)*word.Length-1;
+                    max = Math.Max(max,n);
+                    Console.WriteLine("n={0}, max={1}\n更新 i={2}\n",n,max,i);
+                }
             }
-
-            Console.WriteLine(low);
 
         }
 
