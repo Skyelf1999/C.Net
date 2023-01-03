@@ -528,32 +528,62 @@ namespace vsTest
 
         public void Test() 
         {
-            string sequence = "a";
-            string word = "a";
-
-            int max = 0;
-            for(int i=0;i<sequence.Length-word.Length+1;i++)
-            {
-                if(sequence[i]==word[0])    // 发现相同字符，开始对比
-                {
-                    Console.WriteLine("在 i={0} 处发现相同字符，开始对比",i);
-                    int j;
-                    int n=0;
-                    for(j=i;j<sequence.Length;j++)
-                    {
-                        if(!(sequence[j]==word[(j-i)%word.Length])) break;
-                        if((j-i)%word.Length==word.Length-1) n++;
-                    }
-                    if(n>1) i+=(n-1)*word.Length-1;
-                    max = Math.Max(max,n);
-                    Console.WriteLine("n={0}, max={1}\n更新 i={2}\n",n,max,i);
-                }
-            }
 
         }
 
 
-        
+
+
+        int N;
+        int[][] zero = {new int[]{4,2}};
+        public int OrderOfLargestPlusSign(int n) {
+            int ret = 1;      
+            N = n;
+            if(n==1 && !isZero(0,0)) return 1;
+            int[][] dir = {new int[]{0,1} , new int[]{0,-1} , new int[]{1,0} , new int[]{-1,0}};
+
+            for(int x=0;x<n;x++)
+                for(int y=0;y<n;y++)
+                {
+                    if(isZero(x,y) || (x==0||y==0||x==n-1||y==n-1&&!isZero(x,y))) continue;
+                    // 进行扩展
+                    int k = 1;
+                    while(true)
+                    {
+                        if(isZero(x+(k-1)*dir[0][0],y+(k-1)*dir[0][1])||!inArea(x+(k-1)*dir[0][0],y+(k-1)*dir[0][1])) break;
+                        if(isZero(x+(k-1)*dir[1][0],y+(k-1)*dir[1][1])||!inArea(x+(k-1)*dir[1][0],y+(k-1)*dir[1][1])) break;
+                        if(isZero(x+(k-1)*dir[2][0],y+(k-1)*dir[2][1])||!inArea(x+(k-1)*dir[2][0],y+(k-1)*dir[2][1])) break;
+                        if(isZero(x+(k-1)*dir[3][0],y+(k-1)*dir[3][1])||!inArea(x+(k-1)*dir[3][0],y+(k-1)*dir[3][1])) break;
+                        k++;
+                    }
+                    // ret = Math.Max(ret,k);
+                    if(k>ret)
+                    {
+                        ret = k;
+                        Console.WriteLine("{0} {1}  更新ret={2}",x,y,k);
+                    }
+                }
+
+            return ret-1;
+        }
+
+
+        // 判断当前格是否是0
+        bool isZero(int x,int y)
+        {
+            foreach(int[] arr in zero)
+                if(x==arr[0] && y==arr[1]) return true;
+            return false;
+        }
+
+        bool inArea(int x,int y)
+        {
+            if(x>=0&&x<N && y>=0&&y<N) return true;
+            return false;
+        }
+
+
+    
 
     }
 }

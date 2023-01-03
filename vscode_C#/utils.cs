@@ -37,12 +37,17 @@ namespace vsTest
         {
             for(int i=0;i<arr.Length;i++)
                 Console.Write(arr[i].ToString()+"  ");
+            Console.Write("\n");
         }
 
         public void printArrayString(string[] arr,bool choice=true)
         {
             for(int i=0;i<arr.Length;i++)
-                if(choice) Console.WriteLine(arr[i]);
+                if(choice)
+                {
+                    Console.WriteLine(arr[i]);
+                    Console.Write("\n");
+                }
                 else Console.Write(arr[i]+"  ");
         }
 

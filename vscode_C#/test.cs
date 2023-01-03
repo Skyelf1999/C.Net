@@ -381,6 +381,30 @@ namespace vsTest
 
             utils.funcEnd(func);
         }
+
+
+        public void test_Try()
+        {
+            string func = "异常捕获";
+            utils.funcStart(func);
+
+            int[] arr = {1,2,3,4,5};
+            int i=0;
+            while(true)
+            {
+                try
+                {
+                    Console.WriteLine(arr[i++]);
+                }
+                catch
+                {
+                    Console.WriteLine("下标越界");
+                    break;
+                }
+            }
+
+            utils.funcEnd(func);
+        }
     }
 
     

@@ -21,9 +21,9 @@ namespace vsTest
             utils.funcStart(func);
 
             Data<int> temp;
-            for(int i=arr.Length-1;i>0;i--)       // 最大的沉底，因此每轮少访问最后一个
+            for(int i=arr.Length-1;i>0;i--)         // 最大的沉底到arr[i]，因此每轮少访问一个
                 for(int j=0;j<i;j++)
-                if(arr[j].Index>arr[j+1].Index)
+                    if(arr[j].Index>arr[j+1].Index) // 当前比下一个大，交换
                     {
                         temp = arr[j];
                         arr[j] = arr[j+1];
