@@ -166,6 +166,7 @@ namespace vsTest
             hs.Add(1);
             hs.Add(4);
             hs.Add(10);
+            hs.Add(1);
             Console.WriteLine("10是否在集合中：{0}",hs.Contains(10));
             int[] arr = hs.ToArray();
             utils.printArrayInt(arr);

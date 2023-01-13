@@ -14,7 +14,7 @@ namespace vsTest
         // Leetcode题目
         Leetcode leetcode = new Leetcode();
         // 测试用对象
-        Test testPrograms = new Test();
+        static Test testPrograms = new Test();
         // 排序
         InsertSort insertSort = new InsertSort();
         SwapSort swapSort = new SwapSort();
@@ -27,8 +27,7 @@ namespace vsTest
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
-            ExamRoom room = new ExamRoom(10);
-            Console.WriteLine(room.Seat());
+            testPrograms.test_HashSet();
             
             
             // selectSort.Direct(new Data<int>(2),
@@ -86,57 +85,57 @@ namespace vsTest
 
 
 
-    public class ExamRoom 
-    {
-        int N;
-        List<int> unavailable;
-        Utils utils = new Utils();
+    // public class ExamRoom 
+    // {
+    //     int N;
+    //     List<int> unavailable;
+    //     Utils utils = new Utils();
 
-        public ExamRoom(int n) {
-            N = n;
-            unavailable = new List<int>();
-            unavailable.Add(9);
-        }
+    //     public ExamRoom(int n) {
+    //         N = n;
+    //         unavailable = new List<int>();
+    //         unavailable.Add(9);
+    //     }
         
-        public int Seat() {
-            foreach(int i in unavailable) Console.Write(i+" ");
-            Console.Write("\n");
-            if(unavailable.Count==0)
-            {
-                unavailable.Add(0);
-                unavailable.Sort();
-                return 0;
-            }
-            else if(unavailable.Count==1)
-            {
-                int ret = 0;
-                if(unavailable[0]<5) ret = N-1;
-                unavailable.Add(ret);
-                unavailable.Sort();
-                return ret;
-            }
+    //     public int Seat() {
+    //         foreach(int i in unavailable) Console.Write(i+" ");
+    //         Console.Write("\n");
+    //         if(unavailable.Count==0)
+    //         {
+    //             unavailable.Add(0);
+    //             unavailable.Sort();
+    //             return 0;
+    //         }
+    //         else if(unavailable.Count==1)
+    //         {
+    //             int ret = 0;
+    //             if(unavailable[0]<5) ret = N-1;
+    //             unavailable.Add(ret);
+    //             unavailable.Sort();
+    //             return ret;
+    //         }
 
-            int p = -1, q = unavailable[0];
-            for(int i=0;i<unavailable.Count-1;i++)
-            {
-                int len = unavailable[i+1]-unavailable[i];
-                if(len==1) continue;
-                else if(len/2 > (q-p)/2)
-                {
-                    p = unavailable[i];
-                    q = unavailable[i+1];
-                }
-            }
-            unavailable.Add((q+p)/2);
-            unavailable.Sort();
-            Console.WriteLine("新的区间：[{0}, {1}]",p,q);
-            return (q+p)/2;
-        }
+    //         int p = -1, q = unavailable[0];
+    //         for(int i=0;i<unavailable.Count-1;i++)
+    //         {
+    //             int len = unavailable[i+1]-unavailable[i];
+    //             if(len==1) continue;
+    //             else if(len/2 > (q-p)/2)
+    //             {
+    //                 p = unavailable[i];
+    //                 q = unavailable[i+1];
+    //             }
+    //         }
+    //         unavailable.Add((q+p)/2);
+    //         unavailable.Sort();
+    //         Console.WriteLine("新的区间：[{0}, {1}]",p,q);
+    //         return (q+p)/2;
+    //     }
         
-        public void Leave(int p) {
-            unavailable.Remove(p);
-        }
-    }
+    //     public void Leave(int p) {
+    //         unavailable.Remove(p);
+    //     }
+    // }
 
 }
 
