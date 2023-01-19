@@ -12,7 +12,7 @@ namespace vsTest
         // 工具对象
         Utils utils = new Utils();
         // Leetcode题目
-        Leetcode leetcode = new Leetcode();
+        static Leetcode leetcode = new Leetcode();
         // 测试用对象
         static Test testPrograms = new Test();
         // 排序
@@ -27,8 +27,9 @@ namespace vsTest
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
-            testPrograms.test_HashSet();
+            // testPrograms.test_HashSet();
             
+            Console.WriteLine(leetcode.Test());
             
             // selectSort.Direct(new Data<int>(2),
             //                     new Data<int>(5),

@@ -526,64 +526,42 @@ namespace vsTest
         
 
 
-        public void Test() 
+        public bool Test() 
         {
+            string ransomNote = "bhjdigif";
+            string magazine = "dbjdhdehgbcdjjgadeegdbegehjffie";
+            if(ransomNote.Length>magazine.Length) return false;
 
-        }
+            char[] target = ransomNote.ToCharArray();
+            char[] origin = magazine.ToCharArray();
 
+            Array.Sort(target);
+            Array.Sort(origin);
 
+            foreach(char c in target) Console.Write(c);
+            Console.WriteLine();
+            foreach(char c in origin) Console.Write(c);
+            Console.WriteLine();
 
-
-        int N;
-        int[][] zero = {new int[]{4,2}};
-        public int OrderOfLargestPlusSign(int n) {
-            int ret = 1;      
-            N = n;
-            if(n==1 && !isZero(0,0)) return 1;
-            int[][] dir = {new int[]{0,1} , new int[]{0,-1} , new int[]{1,0} , new int[]{-1,0}};
-
-            for(int x=0;x<n;x++)
-                for(int y=0;y<n;y++)
+            int i,j=0;
+            for(i=0;i<target.Length;i++)
+            {
+                if(j>=origin.Length) return false;
+                Console.WriteLine("i={0}, j={1}",i,j);
+                if(target[i]==origin[j]) j++;
+                else
                 {
-                    if(isZero(x,y) || (x==0||y==0||x==n-1||y==n-1&&!isZero(x,y))) continue;
-                    // 进行扩展
-                    int k = 1;
-                    while(true)
-                    {
-                        if(isZero(x+(k-1)*dir[0][0],y+(k-1)*dir[0][1])||!inArea(x+(k-1)*dir[0][0],y+(k-1)*dir[0][1])) break;
-                        if(isZero(x+(k-1)*dir[1][0],y+(k-1)*dir[1][1])||!inArea(x+(k-1)*dir[1][0],y+(k-1)*dir[1][1])) break;
-                        if(isZero(x+(k-1)*dir[2][0],y+(k-1)*dir[2][1])||!inArea(x+(k-1)*dir[2][0],y+(k-1)*dir[2][1])) break;
-                        if(isZero(x+(k-1)*dir[3][0],y+(k-1)*dir[3][1])||!inArea(x+(k-1)*dir[3][0],y+(k-1)*dir[3][1])) break;
-                        k++;
-                    }
-                    // ret = Math.Max(ret,k);
-                    if(k>ret)
-                    {
-                        ret = k;
-                        Console.WriteLine("{0} {1}  更新ret={2}",x,y,k);
-                    }
+                    // 寻找下一个相同字符
+                    while(j<origin.Length&&target[i]!=origin[j]) j++;
+                    if(j>=origin.Length) return false;
+                    // j++;
                 }
-
-            return ret-1;
+                
+            }
+            return true;
         }
 
 
-        // 判断当前格是否是0
-        bool isZero(int x,int y)
-        {
-            foreach(int[] arr in zero)
-                if(x==arr[0] && y==arr[1]) return true;
-            return false;
-        }
-
-        bool inArea(int x,int y)
-        {
-            if(x>=0&&x<N && y>=0&&y<N) return true;
-            return false;
-        }
-
-
-    
 
     }
 }
