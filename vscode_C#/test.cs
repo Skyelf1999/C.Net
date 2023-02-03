@@ -52,6 +52,21 @@ namespace vsTest
         }
 
 
+        public void test_Action()
+        {
+            Action<string> act;
+        }
+        public void dshGet(string s)
+        {
+            Console.WriteLine("dsh get "+s);
+        }
+        public void htmGet(string s)
+        {
+            Console.WriteLine("htm get "+s);
+        }
+        
+
+
         public void test_Struct()
         {
             string func = "结构体";
