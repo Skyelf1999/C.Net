@@ -23,13 +23,13 @@ namespace vsTest
         static void Main(string[] args)
         {
             
-            // testPrograms.test_Tuple();
+            testPrograms.test_HashSet();
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
             // testPrograms.test_HashSet();
             
-            Console.WriteLine(leetcode.Test());
+            // Console.WriteLine(leetcode.Test());
             
             // selectSort.Direct(new Data<int>(2),
             //                     new Data<int>(5),
