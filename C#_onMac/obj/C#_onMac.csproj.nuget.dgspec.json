@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj": {}
+  },
+  "projects": {
+    "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj",
+        "projectName": "C#_onMac",
+        "projectPath": "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj",
+        "packagesPath": "/Users/dsh/.nuget/packages/",
+        "outputPath": "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/dsh/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[3.1.32, 3.1.32]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
