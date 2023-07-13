@@ -44,4 +44,17 @@ namespace DesignMethod
     }
 
 
+    /// <summary>
+    /// 工厂类接口
+    /// </summary>
+    public interface IFactory
+    {
+        /// <summary>
+        /// 生产方法（工厂类必须）
+        /// </summary>
+        /// <returns></returns>
+        public Product GetProduct();
+    }
+
+
 }
