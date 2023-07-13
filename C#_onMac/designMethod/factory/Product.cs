@@ -15,10 +15,19 @@ namespace DesignMethod
     /// </summary>
     public abstract class Product
     {
+        /// <summary>
+        /// 产品名称
+        /// </summary>
+        /// <value>string</value>
         public abstract string Name{get;}
+
+
+        /// <summary>
+        /// 展示产品信息（）可重写
+        /// </summary>
         public virtual void ShowInfo()
         {
-            Console.WriteLine("产品名称：{0}",this.Name);
+            Console.WriteLine("被生产的产品名称：{0}",this.Name);
         }
     }
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8lC2crNtr0YEnd7EIpkBlc8aB9g3yXh6DggoFRhgNgC4MyVe6F8pcnwDWxXQX8E+MWWcx9CvCBaSN0D+Ztfj8A==",
+  "dgSpecHash": "HqzagAPALIsYDpl4UTDiumkx87JtXMmKLZDKJatoyDNkPdh4OoSxSe3ssrZAux06iES/VE3JWS5tGDz05PukDw==",
   "success": true,
-  "projectFilePath": "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj",
+  "projectFilePath": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
   "expectedPackageFiles": [
     "/Users/dsh/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
     "/Users/dsh/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512"

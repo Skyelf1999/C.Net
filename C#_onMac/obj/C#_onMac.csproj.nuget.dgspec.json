@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj": {}
+    "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj": {}
   },
   "projects": {
-    "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj": {
+    "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj",
+        "projectUniqueName": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
         "projectName": "C#_onMac",
-        "projectPath": "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/C#_onMac.csproj",
+        "projectPath": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
         "packagesPath": "/Users/dsh/.nuget/packages/",
-        "outputPath": "/Users/dsh/共享文件/MyProgramsOnMac/C#/C#_onMac/obj/",
+        "outputPath": "/Users/dsh/Documents/C.Net/C#_onMac/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/dsh/.nuget/NuGet/NuGet.Config"
