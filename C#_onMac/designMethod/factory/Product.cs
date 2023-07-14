@@ -15,11 +15,10 @@ namespace DesignMethod
     /// </summary>
     public abstract class Product
     {
-        /// <summary>
-        /// 产品名称
-        /// </summary>
-        /// <value>string</value>
-        public abstract string Name{get;}
+        public abstract string Name{get;}       // 名称
+        public float price;                     // 价格
+        protected int quality;
+        public int Quality{get{return (int)price/1000;}}
 
 
         /// <summary>
@@ -27,7 +26,7 @@ namespace DesignMethod
         /// </summary>
         public virtual void ShowInfo()
         {
-            Console.WriteLine("被生产的产品名称：{0}",this.Name);
+            Console.WriteLine("被生产的产品：{0} {1}元",this.Name,price);
         }
     }
 
@@ -41,6 +40,13 @@ namespace DesignMethod
 
         public Computer()
         {
+            price = 2000;
+            ShowInfo();
+        }
+        public Computer(float price,string tag)
+        {
+            this.price = price;
+            Console.WriteLine(tag);
             ShowInfo();
         }
     }
@@ -55,6 +61,12 @@ namespace DesignMethod
 
         public Phone()
         {
+            price = 1000;
+            ShowInfo();
+        }
+        public Phone(float price)
+        {
+            this.price = price;
             ShowInfo();
         }
     }

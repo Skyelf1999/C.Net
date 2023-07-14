@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace DesignMethod
 {
+    //----------------------------- 简单工厂类 -----------------------------//
     // 增加新产品，需要添加枚举值
     enum ProductIndex
     {
         Computer,
         Phone
     };
-
 
     /// <summary>
     /// 工厂类
@@ -57,4 +57,23 @@ namespace DesignMethod
     }
 
 
+
+    //----------------------------- 专精工厂类 -----------------------------//
+
+    // 生产：Phone
+    public class PhoneFactory : IFactory
+    {
+        public Product GetProduct()
+        {
+            return new Phone();
+        }
+    }
+    // 生产：Computer
+    public class ComputerFactory : IFactory
+    {
+        public Product GetProduct()
+        {
+            return new Computer();
+        }
+    }
 }
