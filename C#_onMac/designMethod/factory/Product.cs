@@ -43,10 +43,11 @@ namespace DesignMethod
             price = 2000;
             ShowInfo();
         }
-        public Computer(float price,string tag)
+        public Computer(float price)
         {
-            this.price = price;
-            Console.WriteLine(tag);
+            if(price>0) this.price = price;
+            else price = 2000;
+            // Console.WriteLine(tag);
             ShowInfo();
         }
     }
@@ -66,7 +67,8 @@ namespace DesignMethod
         }
         public Phone(float price)
         {
-            this.price = price;
+            if(price>0) this.price = price;
+            else price = 1000;
             ShowInfo();
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Xml;
 using DesignMethod;
 using XmlTest;
 
@@ -11,18 +12,40 @@ namespace OnMac
     {
         static void Main(string[] args)
         {
-            // testFactory();
+            testFactory();
             // testXml();
-            testType();
+            // testType();
         }
 
 
         /// <summary>
-        /// 设计模式：简单工厂
+        /// 设计模式：工厂
         /// </summary>
-        public static void testSimpleFactory()
+        public static void testFactory()
         {
+            Console.WriteLine("简单工厂：传参生产");
             Product product = Factory.GetProduct(1);
+
+            // 读取xml，根据配置生产对应产品
+            Console.WriteLine("\n工厂方法：读配置生产");
+            XmlDocument document = new XmlDocument();
+            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/designMethod/factory/Product.xml");
+            XmlNode productListNode = document.SelectSingleNode("ProductList");
+            // 读取子元素，创建对象
+            Product[] products = new Product[productListNode.ChildNodes.Count];
+            for(int i=0;i<products.Length;i++)
+            {
+                // 获取创建对象所需参数
+                XmlElement productInfo = (XmlElement)productListNode.ChildNodes[i];
+                string typeName = productInfo.GetAttribute("type");     // 产品类型名称
+                string price = productInfo.InnerText;                   // 产品价格
+                if(price.Length<1) price = "1";
+                //反射
+                Type type = Type.GetType("DesignMethod."+typeName);
+                ConstructorInfo ctor = type.GetConstructor(new Type[]{typeof(float)});
+                products[i] = (Product)ctor?.Invoke(new object[]{int.Parse(price)});
+            }
+            
         }
 
 
@@ -76,7 +99,7 @@ namespace OnMac
             Type phoneType = Type.GetType("DesignMethod.Phone");
             ConstructorInfo ctor = phoneType.GetConstructor(new Type[]{typeof(float)});
             var phone = ctor?.Invoke(new object[]{4000});
-            var computer = Activator.CreateInstance(typeof(Computer),8000,"拯救者");
+            var computer = Activator.CreateInstance(typeof(Computer));
         }
     }
 
