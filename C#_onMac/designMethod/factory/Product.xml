@@ -5,7 +5,7 @@
 <ProductList>
     <Product type="Phone">6888</Product>
     <Product type="Phone"></Product>
-    <Product type="Computer">10000</Product>
-    <Product type="Phone"></Product>
+    <Product type="Mac">10000</Product>
+    <Product type="IPhone"></Product>
     <Product type="Computer"></Product>
 </ProductList>

@@ -8,4 +8,8 @@
         <price>15</price>
         <color>yellow</color>
     </Fruit>
+    <Fruit>
+        <price>15</price>
+        <color>yellow</color>
+    </Fruit>
 </FruitShop>

@@ -12,9 +12,10 @@ namespace OnMac
     {
         static void Main(string[] args)
         {
-            testFactory();
+            // testFactory();
             // testXml();
             // testType();
+            testSingleInstance();
         }
 
 
@@ -39,13 +40,22 @@ namespace OnMac
                 XmlElement productInfo = (XmlElement)productListNode.ChildNodes[i];
                 string typeName = productInfo.GetAttribute("type");     // 产品类型名称
                 string price = productInfo.InnerText;                   // 产品价格
-                if(price.Length<1) price = "1";
+                if(price.Length<1) price = "0";
+
                 //反射
                 Type type = Type.GetType("DesignMethod."+typeName);
                 ConstructorInfo ctor = type.GetConstructor(new Type[]{typeof(float)});
                 products[i] = (Product)ctor?.Invoke(new object[]{int.Parse(price)});
             }
             
+            // 抽象工厂
+            Console.WriteLine();
+            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/designMethod/factory/AbstractFactory.xml");
+            string abstractFactoryName = document.SelectSingleNode("AbstractFactory").InnerText;
+            Type absFacType = Type.GetType("DesignMethod."+abstractFactoryName);
+            ConstructorInfo absFacCtor = absFacType.GetConstructor(new Type[]{});
+            IAbstractFactory abstractFactory = (IAbstractFactory)absFacCtor?.Invoke(new object[]{});
+            abstractFactory.CreateComputer();
         }
 
 
@@ -63,7 +73,7 @@ namespace OnMac
         /// </summary>
         public static void testType()
         {
-            Computer cp = new Computer();
+            Computer cp = new Computer(0);
             Type type = cp.GetType();
             // Console.WriteLine("{0} {1} {2}\n",
             //     type.Name , type.FullName , type.BaseType);
@@ -100,6 +110,18 @@ namespace OnMac
             ConstructorInfo ctor = phoneType.GetConstructor(new Type[]{typeof(float)});
             var phone = ctor?.Invoke(new object[]{4000});
             var computer = Activator.CreateInstance(typeof(Computer));
+
+        }
+
+
+        public static void testSingleInstance()
+        {
+            Console.WriteLine("单例测试");
+            SingleInstance instance_1 = SingleInstance.GetInstance();
+            SingleInstance instance_2 = SingleInstance.GetInstance();
+            // instance_2.count += 10;
+            Console.WriteLine("当前获取实例次数：{0}",instance_1.count);
+            Console.WriteLine("是否是同一个实例：{0}",instance_1==instance_2);
         }
     }
 

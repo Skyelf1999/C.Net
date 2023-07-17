@@ -29,10 +29,10 @@ namespace DesignMethod
             switch(index)
             {
                 case (int)ProductIndex.Computer:
-                    ret = new Computer();
+                    ret = new Computer(0);
                     break;
                 case (int)ProductIndex.Phone:
-                    ret = new Phone();
+                    ret = new Phone(0);
                     break;
                 default:
                     Console.WriteLine("产品不存在");
@@ -58,22 +58,27 @@ namespace DesignMethod
 
 
 
-    //----------------------------- 专精工厂类 -----------------------------//
+    //----------------------------- 抽象工厂 -----------------------------//
 
-    // 生产：Phone
-    public class PhoneFactory : IFactory
+    public interface IAbstractFactory
     {
-        public Product GetProduct()
-        {
-            return new Phone();
-        }
+        Phone CreatePhone();
+        Computer CreateComputer();
     }
-    // 生产：Computer
-    public class ComputerFactory : IFactory
+
+    /// <summary>
+    /// Apple公司工厂：生产电脑Mac、手机Iphone
+    /// </summary>
+    public class AppleFactory : IAbstractFactory
     {
-        public Product GetProduct()
+        public Computer CreateComputer()
         {
-            return new Computer();
+            return new Mac(0);
+        }
+
+        public Phone CreatePhone()
+        {
+            return new IPhone(0);
         }
     }
 }

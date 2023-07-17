@@ -10,48 +10,92 @@ namespace DesignMethod
     /// </summary>
 
 
+
+    public interface IProduct
+    {
+        public string Name {get;}
+        public void ShowInfo();
+    }
+
     /// <summary>
     /// 产品类抽象
     /// </summary>
-    public abstract class Product
+    public abstract class Product : IProduct
     {
         public abstract string Name{get;}       // 名称
+        public abstract string Company {get;}   // 所属公司
+        public virtual float DefaultPrice {get {return 100;}}
         public float price;                     // 价格
-        protected int quality;
+        public float? Price
+        {
+            get {return price;}
+            set { price = (value==null || value<0.1f) ? DefaultPrice : (float)value; }
+        }
+        protected int quality;                  // 品质
         public int Quality{get{return (int)price/1000;}}
 
 
         /// <summary>
-        /// 展示产品信息（）可重写
+        /// 展示产品信息
         /// </summary>
         public virtual void ShowInfo()
         {
-            Console.WriteLine("被生产的产品：{0} {1}元",this.Name,price);
+            Console.WriteLine("生产产品：{0} - {1} {2}元",this.Name,Company,price);
         }
     }
 
+
+
+    //----------------------------- 电脑 -----------------------------//
 
     /// <summary>
     /// 产品：电脑
     /// </summary>
-    public class Computer : Product
+    public class Computer : Product,IProduct
     {
         public override string Name {get {return "Computer";}}
+        public override string Company {get {return "测试";}}
 
-        public Computer()
-        {
-            price = 2000;
-            ShowInfo();
-        }
+        public override float DefaultPrice {get {return 4000;}}
+
         public Computer(float price)
         {
-            if(price>0) this.price = price;
-            else price = 2000;
-            // Console.WriteLine(tag);
+            Price = price;
             ShowInfo();
         }
     }
 
+
+    public class Mac : Computer
+    {
+        public override string Name {get {return "Mac";}}
+
+        public override string Company {get {return "Apple";}}
+
+        public override float DefaultPrice {get {return 8000;}}
+
+        public Mac(float price) : base(price)
+        {
+
+        }
+    }
+
+    public class ThinkPad : Computer
+    {
+        public override string Name {get {return "TinkPad";}}
+
+        public override string Company {get {return "联想";}}
+
+        public override float DefaultPrice {get {return 4000;}}
+
+        public ThinkPad(float price) : base(price)
+        {
+        }
+    }
+
+
+
+    //----------------------------- 手机 -----------------------------//
 
     /// <summary>
     /// 产品：手机
@@ -59,17 +103,26 @@ namespace DesignMethod
     public class Phone : Product
     {
         public override string Name {get {return "Phone";}}
+        public override string Company {get {return "测试";}}
+        public override float DefaultPrice {get {return 2000;}}
 
-        public Phone()
-        {
-            price = 1000;
-            ShowInfo();
-        }
         public Phone(float price)
         {
-            if(price>0) this.price = price;
-            else price = 1000;
+            Price = price;
             ShowInfo();
+        }
+    }
+
+
+    public class IPhone : Phone
+    {
+        public override string Name {get {return "iPhone";}}
+        public override string Company {get {return "Apple";}}
+        public override float DefaultPrice {get {return 5000;}}
+
+        public IPhone(float price) : base(price)
+        {
+            
         }
     }
 }

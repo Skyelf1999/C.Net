@@ -23,7 +23,11 @@ namespace XmlTest
                 string color = fruit.ChildNodes[1].InnerText;
                 Console.WriteLine("{0} {1} {2}\n",name,price,color);
             }
-            Console.WriteLine(fruitShopNode.Attributes);
+            Console.WriteLine(fruitShopNode.Attributes+"\n\n");
+
+            XmlNodeList xmlNodeList = document.SelectNodes("FruitShop/Fruit");
+            foreach(XmlElement element in xmlNodeList)
+                Console.WriteLine(element.Name);
         }
 
 
