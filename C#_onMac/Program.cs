@@ -15,7 +15,8 @@ namespace OnMac
             // testFactory();
             // testXml();
             // testType();
-            testSingleInstance();
+            // testSingleInstance();
+            testPrototype();
         }
 
 
@@ -114,6 +115,9 @@ namespace OnMac
         }
 
 
+        /// <summary>
+        /// 测试：单例模式
+        /// </summary>
         public static void testSingleInstance()
         {
             Console.WriteLine("单例测试");
@@ -122,6 +126,20 @@ namespace OnMac
             // instance_2.count += 10;
             Console.WriteLine("当前获取实例次数：{0}",instance_1.count);
             Console.WriteLine("是否是同一个实例：{0}",instance_1==instance_2);
+        }
+
+
+        public static void testPrototype()
+        {
+            Console.WriteLine("原型测试");
+            Prototype a = new Prototype(0,"dsh");
+             a.data.data = "DotA2";
+            Prototype b = a.Clone() as Prototype;
+            a.Text = "htm";
+            Console.WriteLine("{0} {1}",a.Equals(b),a.data.Equals(b.data));
+            a.data.data = "MHW";
+            Console.WriteLine(a);
+            Console.WriteLine(b);
         }
     }
 
