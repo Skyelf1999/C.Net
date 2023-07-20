@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Xml;
-using DesignMethod;
 using XmlTest;
+using DesignPattern;
+using StructPattern;
 
 namespace OnMac
 {
@@ -16,7 +17,9 @@ namespace OnMac
             // testXml();
             // testType();
             // testSingleInstance();
-            testPrototype();
+            // testPrototype();
+            // testAdapter();
+            testBridge();
         }
 
 
@@ -31,9 +34,10 @@ namespace OnMac
             // 读取xml，根据配置生产对应产品
             Console.WriteLine("\n工厂方法：读配置生产");
             XmlDocument document = new XmlDocument();
-            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/designMethod/factory/Product.xml");
+            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/creationPattern/factory/Product.xml");
             XmlNode productListNode = document.SelectSingleNode("ProductList");
             // 读取子元素，创建对象
+            // Console.WriteLine("节点名称：{0}",productListNode.Name);
             Product[] products = new Product[productListNode.ChildNodes.Count];
             for(int i=0;i<products.Length;i++)
             {
@@ -44,16 +48,16 @@ namespace OnMac
                 if(price.Length<1) price = "0";
 
                 //反射
-                Type type = Type.GetType("DesignMethod."+typeName);
-                ConstructorInfo ctor = type.GetConstructor(new Type[]{typeof(float)});
+                Type type = Type.GetType("DesignPattern."+typeName);
+                ConstructorInfo ctor = type.GetConstructor(new Type[]{typeof(int)});
                 products[i] = (Product)ctor?.Invoke(new object[]{int.Parse(price)});
             }
             
             // 抽象工厂
             Console.WriteLine();
-            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/designMethod/factory/AbstractFactory.xml");
+            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/creationPattern/factory/AbstractFactory.xml");
             string abstractFactoryName = document.SelectSingleNode("AbstractFactory").InnerText;
-            Type absFacType = Type.GetType("DesignMethod."+abstractFactoryName);
+            Type absFacType = Type.GetType("DesignPattern."+abstractFactoryName);
             ConstructorInfo absFacCtor = absFacType.GetConstructor(new Type[]{});
             IAbstractFactory abstractFactory = (IAbstractFactory)absFacCtor?.Invoke(new object[]{});
             abstractFactory.CreateComputer();
@@ -116,7 +120,7 @@ namespace OnMac
 
 
         /// <summary>
-        /// 测试：单例模式
+        /// 设计模式：单例
         /// </summary>
         public static void testSingleInstance()
         {
@@ -129,10 +133,13 @@ namespace OnMac
         }
 
 
+        /// <summary>
+        /// 设计模式：原型
+        /// </summary>
         public static void testPrototype()
         {
             Console.WriteLine("原型测试");
-            Prototype a = new Prototype(0,"dsh");
+            Prototype a = new Prototype(1002,"dsh");
              a.data.data = "DotA2";
             Prototype b = a.Clone() as Prototype;
             a.Text = "htm";
@@ -140,6 +147,57 @@ namespace OnMac
             a.data.data = "MHW";
             Console.WriteLine(a);
             Console.WriteLine(b);
+        }
+
+
+        /// <summary>
+        /// 设计模式：结构型模式-适配器
+        /// </summary>
+        public static void testAdapter()
+        {
+            Console.WriteLine("适配器");
+            Adapter adapter = new Adapter();
+            adapter.Method2();
+        }
+
+
+        /// <summary>
+        /// 设计模式：结构型模式-桥接
+        /// </summary>
+        public static void testBridge()
+        {
+            Console.WriteLine(Type.GetType("StructPattern.Fire").FullName);
+            Console.WriteLine("法师的名称、等级等基本属性由法师类实现，而元素相关的功能由外部桥接的接口对象实现\n\n");
+            // 读取xml
+            XmlDocument document = new XmlDocument();
+            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/structPattern/bridgePattern/Magician.xml");
+            XmlNode parent = document.SelectSingleNode("config");
+
+            Magician[] team = new Magician[parent.ChildNodes.Count];
+            // 遍历子标签，通过反射创建对象
+            for(int i=0;i<team.Length;i++)
+            {
+                XmlElement element = parent.ChildNodes[i] as XmlElement;
+                Console.WriteLine("当前信息：{0} {1} {2}\n",element.Name,element.GetAttribute("name"),element.InnerText);
+                // 创建法师对象
+                Type type = Type.GetType("StructPattern.Magician"+element.Name);
+                ConstructorInfo ctor = type.GetConstructor(new Type[]{typeof(string)});
+                team[i] = (Magician)ctor?.Invoke(new object[]{element.GetAttribute("name")});
+                // 设定元素
+                type = Type.GetType(element.InnerText);
+                if(type==null) 
+                {
+                    Console.WriteLine("元素不存在");
+                    string name = "StructPattern."+"Wind";
+                    type = Type.GetType(name);
+                }
+                Console.WriteLine("元素：{0}",type.Name);
+                ctor = type.GetConstructor(new Type[0]);
+                team[i].MagicElement = (IMagicElement)ctor?.Invoke(null);
+            }
+
+            // 施法
+            foreach(Magician magician in team) magician.UltimateSkill();
         }
     }
 

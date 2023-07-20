@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DesignMethod
+namespace DesignPattern
 {
     //----------------------------- 简单工厂类 -----------------------------//
     // 增加新产品，需要添加枚举值

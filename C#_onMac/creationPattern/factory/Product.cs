@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DesignMethod
+namespace DesignPattern
 {
     /// <summary>
     /// 此文件保存产品类的定义
@@ -55,7 +55,6 @@ namespace DesignMethod
     {
         public override string Name {get {return "Computer";}}
         public override string Company {get {return "测试";}}
-
         public override float DefaultPrice {get {return 4000;}}
 
         public Computer(float price)

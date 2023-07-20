@@ -25,9 +25,15 @@ namespace XmlTest
             }
             Console.WriteLine(fruitShopNode.Attributes+"\n\n");
 
+            Console.WriteLine("选取所有FruitShop/Fruit标签");
             XmlNodeList xmlNodeList = document.SelectNodes("FruitShop/Fruit");
             foreach(XmlElement element in xmlNodeList)
                 Console.WriteLine(element.Name);
+            Console.WriteLine();
+
+            Console.WriteLine("选取蔬菜的颜色");
+            XmlNode node = document.SelectSingleNode("FruitShop/Vegetable/color");
+            Console.WriteLine(node.InnerText);
         }
 
 
