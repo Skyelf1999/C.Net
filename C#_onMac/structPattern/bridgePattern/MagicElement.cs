@@ -12,14 +12,14 @@ namespace StructPattern
     public interface IMagicElement
     {
         string GetElementName();        // 获取元素名称
-        void ElementBoost(int n);       // 元素爆发
+        void ElementBoost(int n=1);       // 元素爆发
     }
 
 
     // 具体魔法元素：火、风、土……
     public class Fire : IMagicElement
     {
-        public void ElementBoost(int n)
+        public void ElementBoost(int n=1)
         {
             Console.WriteLine("\t混沌陨石\t伤害倍率：{0}",n);
         }
@@ -29,7 +29,7 @@ namespace StructPattern
 
     public class Wind : IMagicElement
     {
-        public void ElementBoost(int n)
+        public void ElementBoost(int n=1)
         {
             Console.WriteLine("\t强袭飓风\t伤害倍率：{0}",n);
         }
@@ -39,7 +39,7 @@ namespace StructPattern
 
     public class Earth : IMagicElement
     {
-        public void ElementBoost(int n)
+        public void ElementBoost(int n=1)
         {
             Console.WriteLine("\t撕裂大地\t伤害倍率：{0}",n);
         }
