@@ -17,7 +17,7 @@ namespace StructPattern
         /// <summary>
         /// 强化效果
         /// </summary>
-        public abstract void SuperEffect();
+        protected abstract void SuperEffect();
 
         public void ElementBoost(int n=1)
         {
@@ -48,7 +48,7 @@ namespace StructPattern
 
         public override string EffectName => "使元素爆发增加Debuff效果";
 
-        public override void SuperEffect()
+        protected override void SuperEffect()
         {
             Console.WriteLine("对 敌人 施加：Debuff");
         }
@@ -66,7 +66,7 @@ namespace StructPattern
 
         public override string EffectName => "使元素爆发增加Buff效果";
 
-        public override void SuperEffect()
+        protected override void SuperEffect()
         {
             Console.WriteLine("对 友军 施加：Buff");
         }

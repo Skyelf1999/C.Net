@@ -178,15 +178,25 @@ namespace OnMac
         public void testExpand()
         {
             Console.WriteLine("装饰模式");
-            Wind wind = new Wind();
+            IMagicElement wind,buffWind,debuffWind;     // 透明模式，可将装饰前后的对象统一处理
+            wind = new Wind();
             Console.WriteLine("强化前的风元素：");
             wind.ElementBoost();
             Console.WriteLine("强化后的风元素：");
-            BuffElement buffWind = new BuffElement(wind);
+            buffWind = new BuffElement(wind);
             buffWind.ElementBoost();
-            DebuffElement debuffWind = new DebuffElement(wind);
+            debuffWind = new DebuffElement(wind);
             debuffWind.ElementBoost();
+        }
+
+
+        public void testMainSystem()
+        {
+            Console.WriteLine("外观模式（主系统模式）");
+            MainSystem mainSystem = MainSystem.GetInstance();
+            mainSystem.Bounce();
+            mainSystem.DoubleAttack();
+            mainSystem.QuickAttack();
         }
     }
 }
-
