@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Xml;
 using XmlTest;
 using DesignPattern;
-using StructPattern;
+using System.IO;
 
 namespace OnMac
 {
@@ -22,7 +22,9 @@ namespace OnMac
             // testAdapter();
             // testBridge();
             // testComposition();
-            testDesignPattern.testMainSystem();
+            // testDesignPattern.testResponsibilityChain();
+
+            
         }
 
         /// <summary>

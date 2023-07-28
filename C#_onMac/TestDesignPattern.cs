@@ -6,6 +6,7 @@ using System.Xml;
 using System.Reflection;
 using DesignPattern;
 using StructPattern;
+using BehaviorPattern;
 
 namespace OnMac
 {
@@ -198,5 +199,52 @@ namespace OnMac
             mainSystem.DoubleAttack();
             mainSystem.QuickAttack();
         }
+
+
+        public void testFlyWeight()
+        {
+            Console.WriteLine("享元模式");
+            ChessBox chessBox = ChessBox.GetInstance();
+            Chess w1,b1,w2,b2;
+            w1 = chessBox.PutChessAt(0,1,0);
+            w2 = chessBox.PutChessAt(0,2,2);
+            b1 = chessBox.PutChessAt(1,7,0);
+            b2 = chessBox.PutChessAt(1,3,5);
+            Console.WriteLine("棋子是否相同：{0} {1}",w1.Equals(w2),b1.Equals(b2));
+            // 享元模式
+            // 白棋 放置于 (1,0)
+            // 白棋 放置于 (2,2)
+            // 黑棋 放置于 (7,0)
+            // 黑棋 放置于 (3,5)
+            // 棋子是否相同：True True
+        }
+
+
+        public void testResponsibilityChain()
+        {
+            Console.WriteLine("职责链");
+
+            // 创建职责链
+            ChainElement leader,admin, manager;
+            leader = new TeamLeader("htm");
+            admin = new Administration("zdd");
+            manager = new Manager("dsh");
+            leader.SetSuperior(admin);
+            admin.SetSuperior(manager);
+
+            // 使用职责链
+            leader.HandleHolidayRequest(3);
+            leader.HandleHolidayRequest(7);
+            leader.HandleHolidayRequest(15);
+            // 职责链
+            //         组长·htm  已批准假期：3 天
+            // 组长·htm  无审批权限，交由上级处理
+            //         行政·zdd  已批准假期：7 天
+            // 组长·htm  无审批权限，交由上级处理
+            // 行政·zdd  无审批权限，交由上级处理
+            //         经理dsh  已批准假期：15 天
+        }
+        
     }
 }
+
