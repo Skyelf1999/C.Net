@@ -5,10 +5,16 @@ using System.Threading.Tasks;
 
 namespace BehaviorPattern
 {
+    public interface ICommand
+    {
+        public void Execute();
+    }
+
+
     /// <summary>
     /// 抽象命令：请假
     /// </summary>
-    public abstract class AbstractHolidayCommand
+    public abstract class AbstractHolidayCommand : ICommand
     {
         protected ChainElement executor;        // 执行者（此处设定为职责链实例中的链元素类）
         protected int dayNum;
@@ -22,10 +28,13 @@ namespace BehaviorPattern
         /// <summary>
         /// 执行者执行命令
         /// </summary>
-        public virtual void execute()
+        public virtual void Execute()
         {
             executor.HandleHolidayRequest(dayNum);
         }
+
+
+        public override abstract string ToString();
     }
 
 
@@ -37,6 +46,11 @@ namespace BehaviorPattern
         public LeaderHolidayCommand(int num) : base(new TeamLeader(),num)
         {
 
+        }
+
+        public override string ToString()
+        {
+            return "向组长请假："+dayNum+" 天";
         }
     }
 
@@ -50,6 +64,10 @@ namespace BehaviorPattern
         {
         }
 
+        public override string ToString()
+        {
+            return "向行政请假："+dayNum+" 天";
+        }
     }
 
 
@@ -62,5 +80,9 @@ namespace BehaviorPattern
         {
         }
 
+        public override string ToString()
+        {
+            return "向经理请假："+dayNum+" 天";
+        }
     }
 }

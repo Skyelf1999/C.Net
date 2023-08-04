@@ -245,6 +245,21 @@ namespace OnMac
             //         经理dsh  已批准假期：15 天
         }
         
+
+        public void testCommand()
+        {
+            Console.WriteLine("命令模式");
+
+            Button btn = new Button();
+            btn.SetOnClickCommand(new LeaderHolidayCommand(3));
+            btn.SetRotateCommand(new ManagerHolidyCommand(15));
+            btn.Click();
+            btn.Rotate();
+
+            // 命令模式
+            // 组长·  已批准假期：3 天
+            // 经理  已批准假期：15 天
+        }
     }
 }
 

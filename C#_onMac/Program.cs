@@ -22,7 +22,7 @@ namespace OnMac
             // testAdapter();
             // testBridge();
             // testComposition();
-            // testDesignPattern.testResponsibilityChain();
+            testDesignPattern.testCommand();
 
             
         }
