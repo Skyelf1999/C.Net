@@ -12,10 +12,12 @@ namespace XmlTest
         public static void DocumentTest()
         {
             XmlDocument document = new XmlDocument();
-            document.Load("/Users/dsh/Documents/C.Net/C#_onMac/xmlTest/test.xml");
+            document.Load("/Users/dsh/Documents/MyGit/C.Net/C#_onMac/xmlTest/test.xml");
 
             // 取得目标节点
             XmlNode fruitShopNode = document.SelectSingleNode("FruitShop");
+
+            // 遍历目标节点的子元素集合
             foreach(XmlElement fruit in fruitShopNode.ChildNodes)
             {
                 string name = fruit.GetAttribute("name");

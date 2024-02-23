@@ -1,11 +1,11 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    "net7.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    "net7.0": []
   },
   "packageFolders": {
     "/Users/dsh/.nuget/packages/": {}
@@ -13,24 +13,24 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
-      "projectName": "C#_onMac",
-      "projectPath": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
+      "projectUniqueName": "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/test.csproj",
+      "projectName": "test",
+      "projectPath": "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/test.csproj",
       "packagesPath": "/Users/dsh/.nuget/packages/",
-      "outputPath": "/Users/dsh/Documents/C.Net/C#_onMac/obj/",
+      "outputPath": "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dsh/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net7.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "projectReferences": {}
         }
       },
@@ -41,8 +41,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net7.0": {
+        "targetAlias": "net7.0",
         "imports": [
           "net461",
           "net462",
@@ -54,22 +54,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[3.1.32, 3.1.32]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }

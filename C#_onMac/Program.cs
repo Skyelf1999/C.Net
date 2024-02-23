@@ -16,15 +16,14 @@ namespace OnMac
             TestDesignPattern testDesignPattern = TestDesignPattern.GetInstance();
             // testFactory();
             // testXml();
-            // testType();
+            testType();
             // testSingleInstance();
             // testPrototype();
             // testAdapter();
             // testBridge();
             // testComposition();
-            testDesignPattern.testCommand();
+            // testDesignPattern.testCommand();
 
-            
         }
 
         /// <summary>
