@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<config>
-    <Normal name="htm">StructPattern.Wind</Normal>
-    <Legend name="dsh">StructPattern.Fire</Legend>
-    <Master name="zdd">StructPattern.Earth</Master>
-    <Normal name="zrq">StructPattern.Wind</Normal>
-</config>
