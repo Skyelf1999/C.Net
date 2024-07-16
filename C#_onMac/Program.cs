@@ -13,18 +13,18 @@ namespace OnMac
     {
         static void Main(string[] args)
         {
-            TestDesignPattern testDesignPattern = TestDesignPattern.GetInstance();
-            // testFactory();
             // testXml();
             // testType();
-            // testSingleInstance();
-            // testPrototype();
-            // testAdapter();
-            // testBridge();
-            // testComposition();
+
+            TestDesignPattern testDesignPattern = TestDesignPattern.GetInstance();
+            // testDesignPattern.testFactory();
+            // testDesignPattern.testSingleInstance();
+            // testDesignPattern.testPrototype();
+            // testDesignPattern.testAdapter();
+            // testDesignPattern.testBridge();
+            // testDesignPattern.testComposition();
             testDesignPattern.testCommand();
 
-            
         }
 
         /// <summary>
