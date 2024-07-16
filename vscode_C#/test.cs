@@ -189,7 +189,7 @@ namespace vsTest
             Console.WriteLine("\n数组转换成集合");
             ISet<int> set = new HashSet<int>(arr);
             Console.WriteLine("集合包含4？\t{0}",set.Contains(4));
-            Console.WriteLine(hs[0]);
+            // Console.WriteLine(hs[0]);
 
 
             utils.funcEnd(func);
