@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "2x3gS4y5kn/6UR0va63P+FMJCm1UB/FB/GnFQTnt9wqxgpKw5fgW1C1N06NMDuWsKMIp9AH4L/wHdoYAkVf2fw==",
+  "dgSpecHash": "HqzagAPALIsYDpl4UTDiumkx87JtXMmKLZDKJatoyDNkPdh4OoSxSe3ssrZAux06iES/VE3JWS5tGDz05PukDw==",
   "success": true,
-  "projectFilePath": "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/test.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
+  "expectedPackageFiles": [
+    "/Users/dsh/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "/Users/dsh/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }

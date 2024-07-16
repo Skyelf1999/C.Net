@@ -87,18 +87,18 @@ namespace OnMac
         /// <summary>
         /// 设计模式：原型
         /// </summary>
-        // public void testPrototype()
-        // {
-        //     Console.WriteLine("原型测试");
-        //     Prototype a = new Prototype(1002,"dsh");
-        //     a.data.data = "DotA2";
-        //     Prototype b = a.Clone() as Prototype;
-        //     a.Text = "htm";
-        //     Console.WriteLine("{0} {1}",a.Equals(b),a.data.Equals(b.data));
-        //     a.data.data = "MHW";
-        //     Console.WriteLine(a);
-        //     Console.WriteLine(b);
-        // }
+        public void testPrototype()
+        {
+            Console.WriteLine("原型测试");
+            Prototype a = new Prototype(1002,"dsh");
+             a.data.data = "DotA2";
+            Prototype b = a.Clone() as Prototype;
+            a.Text = "htm";
+            Console.WriteLine("{0} {1}",a.Equals(b),a.data.Equals(b.data));
+            a.data.data = "MHW";
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+        }
 
 
         /// <summary>
@@ -163,12 +163,12 @@ namespace OnMac
         {
             Console.WriteLine("组合模式");
             Folder a = new Folder("小说");
-            a.add(new StructPattern.File("目录"));
+            a.add(new File("目录"));
             a.add(new Folder("第一卷"));
             a.add(new Folder("第二卷"));
             a.add(new Folder("第三卷"));
-            a.GetChild(1).add(new StructPattern.File("2-1"));
-            a.GetChild(1).add(new StructPattern.File("2-2"));
+            a.GetChild(1).add(new File("2-1"));
+            a.GetChild(1).add(new File("2-2"));
             a.ShowInfo();
         }
 
