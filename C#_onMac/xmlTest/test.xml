@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FruitShop>
+    <Fruit name="apple">
+        <price>10</price>
+        <color>red</color>
+    </Fruit>
+    <Fruit name="banana">
+        <price>15</price>
+        <color>yellow</color>
+    </Fruit>
+    <Fruit>
+        <price>15</price>
+        <color>yellow</color>
+    </Fruit>
+    <Vegetable>
+        <price>
+            30
+        </price>
+        <color>green</color>
+    </Vegetable>
+</FruitShop>
