@@ -11,7 +11,6 @@ namespace StructPattern
     public abstract class FileNode
     {
         public string name;
-        
         public abstract void add(FileNode node);
         public abstract void remove(int i);
         public abstract FileNode GetChild(int i);
