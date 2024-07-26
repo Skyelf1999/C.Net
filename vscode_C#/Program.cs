@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Graph;
+using Leetcode;
 
 // 创建：dotnet new console
 // 在控制台中输入 dotnet run 运行程序
@@ -25,7 +27,7 @@ namespace vsTest
         static void Main(string[] args)
         {
             
-            testPrograms.test_HashSet();
+            // testPrograms.test_HashSet();
             
             // int[][] arr = {new int[]{3,0,8,4}, new int[]{2,4,5,7}, new int[]{9,2,6,3}, new int[]{0,3,1,0}};
 
@@ -41,6 +43,9 @@ namespace vsTest
             //                     new Data<int>(1));
             
             // Console.WriteLine(2 | 1<<2);
+
+            Solution solution = new Solution();
+            solution.FindPaths(2,2,2,0,0);
         }
         
     }
