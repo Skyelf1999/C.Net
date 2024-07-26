@@ -66,3 +66,5 @@ vscode_C\#/obj/project.assets.json
 vscode_C\#/obj/project.nuget.cache
 vscode_C\#/obj/vscode_C\#.csproj.nuget.dgspec.json
 vscode_C\#/obj/vscode_C\#.csproj.nuget.g.props
+/vscode_C\#/bin
+.DS_Store
