@@ -279,7 +279,7 @@ namespace vsTest
 
 
         // 广度优先
-        public void BFS(TreeNode? cur,bool choice)
+        public void BFS(TreeNode? cur,bool choice=true)
         {
             Console.WriteLine("进行BFS，起点：{0}",cur);
             Queue<TreeNode> que = new Queue<TreeNode>();
@@ -314,7 +314,7 @@ namespace vsTest
                         if(floor[i].right!=null) que.Enqueue(floor[i].right);
                     }
                     floor.Clear();
-                    Console.WriteLine();
+                    Console.WriteLine("本行结束\n");
                 }
             }
         }
@@ -336,6 +336,49 @@ namespace vsTest
         }
 
 
+        // 删除二叉排序树的根节点
+        TreeNode DeleteRoot(TreeNode root)
+        {
+            // 有单子
+            if(root.right==null) return root.left;
+            else if(root.left==null) return root.right;
 
+            // 有左右子树，用【左子树最大值】或【右子树最小值】代替根节点
+            // 此处用右子树最小值代替
+            // TreeNode parent = root;
+            // TreeNode maxInLeft = root.left;
+            // while(maxInLeft.right!=null)
+            // {
+            //     parent = maxInLeft;
+            //     maxInLeft = maxInLeft.right;
+            // }
+
+            // // 删除
+            // if(maxInLeft.left!=null) parent.right = maxInLeft.left;
+            // else parent.right = null;
+            // maxInLeft.left = root.left;
+            // maxInLeft.right = root.right;
+            // root = null;
+            // return maxInLeft;
+
+
+            TreeNode parent = root;
+            TreeNode minInRight = root.right;
+            bool isRight = true;
+            while(minInRight.left!=null)
+            {
+                isRight = false;
+                parent = minInRight;
+                minInRight = minInRight.left;
+            }
+
+            // 删除
+            if(isRight) parent.right = minInRight.right==null?null:minInRight.right;
+            else parent.left = minInRight.right==null?null:minInRight.right;
+            minInRight.left = root.left;
+            minInRight.right = root.right;
+            root = null;
+            return minInRight;
+        }
     }
 }

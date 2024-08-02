@@ -15,10 +15,14 @@ namespace vsTest
     {
         // 工具对象
         Utils utils = new Utils();
+
         // Leetcode题目
         static Leetcode leetcode = new Leetcode();
         // 测试用对象
+        static LeetCodeTest leetCodeTest = new LeetCodeTest();
+
         static Test testPrograms = new Test();
+
         // 排序
         InsertSort insertSort = new InsertSort();
         SwapSort swapSort = new SwapSort();
@@ -44,12 +48,18 @@ namespace vsTest
             
             // Console.WriteLine(2 | 1<<2);
 
-            Solution solution = new Solution();
-            solution.FindPaths(2,2,2,0,0);
+
+            List<int>[] arrList = new List<int>[3];
+            arrList[0] = new List<int>(new int[]{1,2,3});
+            arrList[1] = new List<int>(new int[]{4,5});
+            arrList[2] = new List<int>(new int[]{6,7,8,9});
+            Console.WriteLine(arrList[2][2]);
         }
+
         
     }
     
+
 
     // 测试用数据类
     class Data<T>

@@ -107,6 +107,7 @@ namespace vsTest
             char[] arr = str.ToCharArray();
             List<char> list = new List<char>(arr);
             Console.WriteLine(list.Contains('f'));
+            list.Sort();
             
             Console.WriteLine("\n测试分割功能：");
             string sentence = " something  for   nothing ";
