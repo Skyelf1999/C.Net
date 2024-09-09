@@ -8,41 +8,27 @@ namespace Leetcode
 
     public class LeetCodeTest
     {
-        public int MaxmiumScore(int[] cards, int cnt) 
+        public int LongestArithSeqLength(int[] nums) 
         {
-            /*
-                选cnt个数，且和为偶数：2n个奇数(n>=0)
-                因此，每次可挑选：1个偶数，或2个奇数
-            */
-            // 两种数分组（降序，方便优先挑大的）
-            List<int> oddArr = new List<int>();     // 奇数
-            List<int> evenArr = new List<int>();    // 偶数
-            Array.Sort(cards);
-            for(int i=cards.Length-1;i>=0;i--)
-                if(cards[i]%2==1) oddArr.Add(cards[i]);
-                else evenArr.Add(cards[i]);
+            int n = nums.Length;
 
-            // 如果必须选奇数个奇数，那么必然无法选出和为偶数的情况
-            if(evenArr.Count<cnt && (cnt-evenArr.Count)%2==1) return 0;
-
-            // 挑选cnt个数
             int ret = 0;
-            int oddNum=0, evenNum=0;
-            while((oddNum+evenNum)<cnt)
+            // dp[i]：以nums[i]结尾的各个等差子序列，不同等差与对应的子序列长度
+            Dictionary<int,int>[] dp = new Dictionary<int,int>[n];
+            for(int cur=0;cur<n;cur++)
             {
-                // 选偶数
-                if((oddArr.Count-oddNum)<2 || (oddArr[oddNum]+oddArr[oddNum+1])<evenArr[evenNum])
+                Console.WriteLine("nums[{0}] = {1}", cur, nums[cur]);
+                dp[cur] = new Dictionary<int, int>();
+                for(int pre=0;pre<cur;pre++)
                 {
-                    Console.WriteLine("选偶数：{0}\tret={1}", evenArr[evenNum], ret);
-                    ret += evenArr[evenNum++];
+                    // 枚举当前元素之前的元素，作为等差序列中的上一个元素
+                    int diff = nums[cur] - nums[pre];
+                    int lastLength = dp[pre].ContainsKey(diff) ? dp[pre][diff] : 0;
+                    if(!dp[cur].ContainsKey(diff)) dp[cur][diff] = 2;
+                    dp[cur][diff] = Math.Max(dp[cur][diff], lastLength+1);
+                    if(dp[cur][diff]>ret) ret = dp[cur][diff];
                 }
-                // 选奇数
-                else
-                {
-                    Console.WriteLine("选奇数：{0}、(1)\tret={2}", oddArr[oddNum], oddArr[oddNum+1], ret);
-                    ret += oddArr[oddNum] + oddArr[oddNum+1];
-                    oddNum += 2;
-                }
+                foreach(int diff in dp[cur].Keys) Console.WriteLine("diff：{0}，最长等差子序列长度：{1}",diff,dp[cur][diff]);
             }
 
             return ret;

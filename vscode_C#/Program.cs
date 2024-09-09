@@ -48,12 +48,8 @@ namespace vsTest
             
             // Console.WriteLine(2 | 1<<2);
 
-
-            List<int>[] arrList = new List<int>[3];
-            arrList[0] = new List<int>(new int[]{1,2,3});
-            arrList[1] = new List<int>(new int[]{4,5});
-            arrList[2] = new List<int>(new int[]{6,7,8,9});
-            Console.WriteLine(arrList[2][2]);
+            leetCodeTest.LongestArithSeqLength(new int[]{3,6,9,12});
+            
         }
 
         
