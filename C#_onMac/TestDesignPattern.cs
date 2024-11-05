@@ -91,7 +91,7 @@ namespace OnMac
         {
             Console.WriteLine("原型测试");
             Prototype a = new Prototype(1002,"dsh");
-             a.data.data = "DotA2";
+            a.data.data = "DotA2";
             Prototype b = a.Clone() as Prototype;
             a.Text = "htm";
             Console.WriteLine("{0} {1}",a.Equals(b),a.data.Equals(b.data));

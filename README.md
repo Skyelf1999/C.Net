@@ -23,6 +23,24 @@
 
 ### C#_onMac
 
+##### behaviorPattern
+
+- 
+
+##### creationPattern
+
+- factory：工厂模式
+- Builder：建造者模式
+- SingleInstance：单例模式
+- Prototype：原型模式
+
+##### structPattern
+
+##### xmlTest
+
+- XmlTest：xml解析测试
+- Test：测试用的xml
+
 
 
 ### Study
