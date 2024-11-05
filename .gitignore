@@ -72,3 +72,6 @@ vscode_C\#/obj/vscode_C\#.csproj.nuget.g.props
 .DS_Store
 /vscode_C\#/bin
 /vscode_C\#/obj
+*.dll
+*.cache
+*.props
