@@ -4,17 +4,17 @@ using System;
 using System.Collections;
 
 
-namespace vsTest
+namespace Leetcode
 {
     // 保存Leetcode题目答案
-    class Leetcode
+    class LeetcodeQuest
     {
         // 题目：
         /*
             
         */
 
-        public Utils utils = new Utils();
+        // public Utils utils = new Utils();
 
 
         // 数组特征值
@@ -367,26 +367,26 @@ namespace vsTest
 
         // 题目：寻找重复子树
         // 存储访问过的子树字符串和对应的节点
-        Dictionary<string,TreeNode> history = new Dictionary<string,TreeNode>();
-        // 存储重复子树的根节点
-        HashSet<TreeNode> repeatNodes = new HashSet<TreeNode>();
-        public IList<TreeNode> FindDuplicateSubtrees(TreeNode root) 
-        {
-            dfs(root);
-            return new List<TreeNode>(repeatNodes);
-        }
-        public string dfs(TreeNode cur)
-        {
-            if(cur==null) return "";
-            // 子树字符串
-            string str = cur.data.ToString() + "(";
-            str = str + dfs(cur.left) + ")(";
-            str = str + dfs(cur.right) + ")";
-            // 历史记录中有此子串 --> 有重复子树
-            if(history.ContainsKey(str)) repeatNodes.Add(history[str]);
-            else history.Add(str,cur);
-            return str;
-        }
+        // Dictionary<string,TreeNode> history = new Dictionary<string,TreeNode>();
+        // // 存储重复子树的根节点
+        // HashSet<TreeNode> repeatNodes = new HashSet<TreeNode>();
+        // public IList<TreeNode> FindDuplicateSubtrees(TreeNode root) 
+        // {
+        //     dfs(root);
+        //     return new List<TreeNode>(repeatNodes);
+        // }
+        // public string dfs(TreeNode cur)
+        // {
+        //     if(cur==null) return "";
+        //     // 子树字符串
+        //     string str = cur.data.ToString() + "(";
+        //     str = str + dfs(cur.left) + ")(";
+        //     str = str + dfs(cur.right) + ")";
+        //     // 历史记录中有此子串 --> 有重复子树
+        //     if(history.ContainsKey(str)) repeatNodes.Add(history[str]);
+        //     else history.Add(str,cur);
+        //     return str;
+        // }
 
 
         // 题目：交换数字，使原数最大

@@ -17,7 +17,7 @@ namespace vsTest
         Utils utils = new Utils();
 
         // Leetcode题目
-        static Leetcode leetcode = new Leetcode();
+        static LeetcodeQuest leetcode = new LeetcodeQuest();
         // 测试用对象
         static LeetCodeTest leetCodeTest = new LeetCodeTest();
 
