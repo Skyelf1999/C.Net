@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj": {}
+    "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/C#_onMac.csproj": {}
   },
   "projects": {
-    "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj": {
+    "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/C#_onMac.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
+        "projectUniqueName": "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/C#_onMac.csproj",
         "projectName": "C#_onMac",
-        "projectPath": "/Users/dsh/Documents/C.Net/C#_onMac/C#_onMac.csproj",
+        "projectPath": "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/C#_onMac.csproj",
         "packagesPath": "/Users/dsh/.nuget/packages/",
-        "outputPath": "/Users/dsh/Documents/C.Net/C#_onMac/obj/",
+        "outputPath": "/Users/dsh/Documents/MyGit/C.Net/C#_onMac/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/dsh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -35,8 +35,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -51,11 +51,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
+              "version": "[6.0.21, 6.0.21]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[3.1.32, 3.1.32]"
+              "version": "[6.0.21, 6.0.21]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.21, 6.0.21]"
             }
           ],
           "frameworkReferences": {
@@ -63,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

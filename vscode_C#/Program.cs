@@ -48,8 +48,12 @@ namespace vsTest
             
             // Console.WriteLine(2 | 1<<2);
 
-            leetCodeTest.LongestArithSeqLength(new int[]{3,6,9,12});
+            // leetCodeTest.LongestArithSeqLength(new int[]{3,6,9,12});
             
+            string s = "bcda";
+            char[] arr = s.ToCharArray();
+            Array.Sort(arr);
+            Console.WriteLine(arr[1]);
         }
 
         

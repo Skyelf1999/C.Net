@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OELbqqwrRgf7h1WTyCH3V7VgKrJpnzSIVpsplddDpTkq8YQKLdJsR5u8Vx9gZpdJwsNQxO8Za+aIt3XIoZuq6g==",
+  "dgSpecHash": "zoxevyAt/ZCTyfnZDh86d39ie1WXLSNAk+wPgOsSVEHoLZ46ThMCziYVS/+rzO3EpM/WK/0WXeJeiBm39C9Pzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Documents\\MyPrograms\\C.Net\\vscode_C#\\vscode_C#.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/dsh/Documents/MyGit/C.Net/vscode_C#/vscode_C#.csproj",
+  "expectedPackageFiles": [
+    "/Users/dsh/.nuget/packages/microsoft.netcore.app.ref/6.0.21/microsoft.netcore.app.ref.6.0.21.nupkg.sha512",
+    "/Users/dsh/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.21/microsoft.aspnetcore.app.ref.6.0.21.nupkg.sha512",
+    "/Users/dsh/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.21/microsoft.netcore.app.host.osx-x64.6.0.21.nupkg.sha512"
+  ],
   "logs": []
 }
