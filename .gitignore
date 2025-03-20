@@ -76,3 +76,14 @@ vscode_C\#/obj/vscode_C\#.csproj.nuget.g.props
 *.cache
 *.props
 /C\#_onMac/obj
+C\#_onMac/obj/C\#_onMac.csproj.nuget.dgspec.json
+C\#_onMac/obj/C\#_onMac.csproj.nuget.g.props
+C\#_onMac/obj/project.assets.json
+C\#_onMac/obj/project.nuget.cache
+C\#_onMac/obj/C\#_onMac.csproj.nuget.dgspec.json
+C\#_onMac/obj/C\#_onMac.csproj.nuget.g.props
+C\#_onMac/obj/project.assets.json
+C\#_onMac/obj/project.nuget.cache
+*.json
+*.exe
+/DesignPattern/obj
